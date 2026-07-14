@@ -1,0 +1,31 @@
+name: validate-services
+
+# Valida todos los service.yml del repo contra el schema canónico
+# (data/schemas/service.schema.json): campos obligatorios, licencia de datos,
+# origen consultable (links) y coherencia name ↔ directorio.
+# Es el guardián del modelo estricto de contribución: ningún PR entra
+# con una skill/MCP/tool sin origen y licencia declarados.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install pyyaml jsonschema
+
+      - name: Validar service.yml contra el schema
+        run: python3 scripts/validate_services.py

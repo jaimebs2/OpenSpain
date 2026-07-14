@@ -1,0 +1,60 @@
+name: carnet-conducir
+display_name: Carnet de Conducir
+description: >
+  Guía completa sobre permisos de conducir en España: tipos de permiso
+  (AM, A1, A2, A, B, C, D), proceso de obtención (autoescuela, exámenes
+  teórico y práctico), renovación y plazos, canje de permisos extranjeros
+  (con y sin convenio bilateral), sistema de permiso por puntos (saldo,
+  infracciones, recuperación), pérdida de vigencia y tasas DGT.
+organization: Dirección General de Tráfico (DGT)
+tags: [vehículos, carnet de conducir, permiso de conducir, DGT, autoescuela, renovación, canje, puntos, examen teórico, examen práctico]
+
+links:
+  website: https://www.dgt.es/nuestros-servicios/permisos-de-conducir/
+  sede_permisos: https://sede.dgt.gob.es/es/permisos-de-conducir/
+  renovacion: https://sede.dgt.gob.es/es/permisos-de-conducir/renovar-permiso/
+  canje: https://sede.dgt.gob.es/es/permisos-de-conducir/canje-permisos/
+  puntos: https://sede.dgt.gob.es/es/otros-servicios/consulta-puntos/
+  tasas: https://sede.dgt.gob.es/es/tramites-y-multas/tasas/
+
+license:
+  data: Información pública de la DGT
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación sobre permisos de conducir.
+    No accede a APIs de datos ni a la Sede Electrónica para trámites.
+    Cubre tipos de permiso, obtención, renovación, canje de permisos
+    extranjeros y sistema de puntos. Para tráfico en tiempo real usar
+    dgt-trafico; para ITV usar itv; para permiso internacional usar
+    permiso-internacional.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Tipos de permiso de conducir (AM, A1, A2, A, B, C1, C, D1, D y variantes +E)
+    - Proceso completo para obtener el permiso B (autoescuela, exámenes, costes)
+    - Plazos de renovación según edad y tipo de permiso
+    - Proceso de renovación (centro de reconocimiento médico)
+    - Canje de permisos extranjeros (países con y sin convenio, UE/EEE)
+    - Sistema de permiso por puntos (saldo, infracciones, recuperación, pérdida total)
+    - Tasas DGT vigentes
+    - URLs de trámites en la Sede Electrónica de la DGT
+  not_accessible:
+    - Saldo de puntos individual del conductor (requiere Cl@ve/certificado)
+    - Tramitación real de permisos o canjes
+    - Estado del tráfico en tiempo real (usar skill dgt-trafico)
+    - Inspección técnica de vehículos (usar skill itv)
+    - Permiso internacional de conducción (usar skill permiso-internacional)
+    - Transferencias de vehículos (usar skill transferencia-vehiculos)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

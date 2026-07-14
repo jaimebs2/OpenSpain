@@ -1,0 +1,62 @@
+name: oposiciones
+display_name: Oposiciones al Empleo Público — Guía Completa
+description: >
+  Guía completa de las oposiciones al empleo público en España: sistemas de
+  acceso (oposición, concurso-oposición, concurso), grupos y subgrupos de
+  clasificación (A1, A2, C1, C2, E), proceso de selección (OEP, convocatoria,
+  solicitud, exámenes, nombramiento), principales oposiciones por volumen
+  (AGE, sanidad, educación, justicia, fuerzas de seguridad, Correos),
+  requisitos generales (nacionalidad, edad, titulación), turnos de acceso
+  (libre, promoción interna, discapacidad), Oferta de Empleo Público, bolsas
+  de interinos y procesos de estabilización.
+organization: Administración General del Estado / Comunidades Autónomas / Entidades Locales
+tags: [empleo público, oposiciones, funcionario, opositar, OEP, cuerpos, A1, A2, C1, C2, convocatoria, BOE, estabilización, interinos]
+
+links:
+  website: https://administracion.gob.es/pag_Home/empleo-publico.html
+  boe: https://www.boe.es
+  punto_acceso: https://administracion.gob.es
+
+license:
+  data: Información pública de administracion.gob.es y BOE
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación sobre el sistema de oposiciones en
+    España. No accede a APIs de datos ni publica convocatorias. Proporciona
+    información sobre sistemas de acceso, cuerpos, proceso y requisitos.
+    Redirige a skills específicas (boe, educacion, becas-mec, laboral-contratos,
+    sepe) para consultas relacionadas.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Sistemas de acceso al empleo público (oposición, concurso-oposición, concurso)
+    - Grupos y subgrupos de clasificación (A1, A2, C1, C2, E)
+    - Proceso de selección completo (OEP a nombramiento)
+    - Principales oposiciones por volumen y administración
+    - Requisitos generales (nacionalidad, edad, titulación)
+    - Turnos de acceso (libre, promoción interna, discapacidad)
+    - Oferta de Empleo Público (qué es, dónde se publica)
+    - Bolsas de interinos
+    - Procesos de estabilización (Ley 20/2021)
+    - Sueldos base orientativos por subgrupo
+    - Consejos prácticos de preparación
+  not_accessible:
+    - Convocatorias específicas en tiempo real (usar skill boe)
+    - Temarios detallados de cuerpos concretos
+    - Estado de procesos selectivos individuales
+    - Datos estadísticos educativos (usar skill educacion)
+    - Información sobre becas (usar skill becas-mec)
+    - Derecho laboral y contratos (usar skill laboral-contratos)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

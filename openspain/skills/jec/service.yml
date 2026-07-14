@@ -1,0 +1,69 @@
+name: jec
+display_name: Resultados electorales (Ministerio del Interior / JEC)
+description: >
+  Resultados electorales oficiales de España: Congreso, Senado, Municipales,
+  Cabildos, Parlamento Europeo y Referéndum. Aunque la Junta Electoral Central
+  (JEC) organiza los procesos, los datos los publica el Ministerio del
+  Interior en el portal Infoelectoral, en forma de ZIPs por convocatoria
+  con CSVs de ancho fijo. Como complemento, datos.gob.es indexa datasets
+  electorales de comunidades autónomas y ayuntamientos.
+organization: Ministerio del Interior — Subsecretaría / Junta Electoral Central
+tags: [elecciones, resultados electorales, votos, congreso, senado, municipales, europeas, referéndum, JEC, infoelectoral]
+
+links:
+  website: https://infoelectoral.interior.gob.es
+  downloads: https://infoelectoral.interior.gob.es/es/elecciones-celebradas/area-de-descargas/
+  methodology: https://infoelectoral.interior.gob.es/export/sites/default/pdf/metodologia/Metodologia.pdf
+  jec: http://www.juntaelectoralcentral.es/cs/jec/inicio
+  catalog: https://datos.gob.es/apidata/catalog/dataset/title/elecciones?_format=json
+  terms: https://infoelectoral.interior.gob.es/es/inicio/
+
+license:
+  data: Real Decreto 1495/2011, reutilización de información del sector público
+  code: MIT
+
+api:
+  type: mixed
+  base_urls:
+    infoelectoral_api: https://infoelectoral.interior.gob.es/min
+    infoelectoral_zips: https://infoelectoral.interior.gob.es/estaticos/docxl/apliextr
+    datos_gob_es: https://datos.gob.es/apidata/catalog/dataset
+  auth:
+    required: true
+    notes: >
+      La API JSON interna de Infoelectoral (/min/...) usa autenticación HTTP
+      Basic con credenciales públicas embebidas en el JS del propio portal:
+      usuario `apiInfoelectoral`, contraseña `apiInfoelectoralPro`. Las URLs
+      de los ZIPs (/estaticos/docxl/apliextr/...) son públicas sin
+      autenticación. datos.gob.es no requiere auth.
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial. Los ZIPs son ficheros estáticos servidos con
+      Content-Length conocido. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+    coverage: >
+      Convocatorias desde 1977 (Congreso) y 1979 (Municipales) hasta la
+      última celebrada. Incluye Referéndum, Congreso, Senado, Municipales,
+      Cabildos canarios y Parlamento Europeo.
+  accessible:
+    - Listado de tipos de convocatoria (Congreso, Senado, Municipales, ...)
+    - Listado de convocatorias por tipo (fechas históricas)
+    - URLs de descarga de los ZIPs por convocatoria y ámbito (Mesa, Municipio, Superior al municipio)
+    - CSVs de ancho fijo dentro del ZIP con resultados completos por nivel
+    - Datasets electorales autonómicos y municipales vía datos.gob.es
+  not_accessible:
+    - Sondeos / encuestas a pie de urna (no son datos oficiales)
+    - Resultados en tiempo real durante el escrutinio (la API solo expone resultados ya consolidados)
+    - Datos personales del censo electoral
+    - Resultados de elecciones autonómicas vasco-navarras gestionadas íntegramente por sus gobiernos (parcial)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

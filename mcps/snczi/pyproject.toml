@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openspain-snczi"
+version = "0.1.0"
+description = "MCP server for Spain flood-zone and Public Hydraulic Domain (DPH) queries via SNCZI (MITECO) WMS"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "httpx>=0.27.0",
+  "mcp>=1.0.0",
+]
+
+[project.scripts]
+openspain-snczi-mcp = "snczi.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

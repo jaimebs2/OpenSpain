@@ -1,0 +1,55 @@
+name: sepe
+display_name: Servicio Público de Empleo Estatal
+description: >
+  Descubre y descarga datasets de empleo publicados por el SEPE (antiguo INEM)
+  a través del catálogo nacional datos.gob.es: paro registrado por municipio,
+  provincia o sexo y edad, contratos registrados por sector, y demandantes de
+  empleo. Nunca intenta scrapear sepe.gob.es.
+organization: Ministerio de Trabajo y Economía Social
+tags: [empleo, paro, desempleo, contratos, SEPE, INEM, mercado laboral]
+
+links:
+  website: https://www.sepe.es
+  docs: https://datos.gob.es/es/apidata
+  terms: https://datos.gob.es/es/aviso-legal
+
+license:
+  data: Ley 37/2007 de reutilización de la información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    catalogo: https://datos.gob.es/apidata/catalog/dataset
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Paro registrado por municipio, provincia y comunidad autónoma
+    - Paro registrado por sexo, grupo de edad y sectores económicos
+    - Contratos registrados por sector, ocupación y territorio
+    - Demandantes de empleo y colectivos específicos (jóvenes, larga duración, extranjeros)
+    - URLs reales de descarga (CSV, JSON, XLSX) extraídas de datos.gob.es
+  not_accessible:
+    - Datos individuales de demandantes de empleo (protegidos)
+    - Gestión de prestaciones por desempleo en tiempo real
+    - Trámites autenticados con certificado digital o Cl@ve en sepe.gob.es
+  notes:
+    - >
+      Anonimización SEPE: en los CSV, los valores entre 1 y 4 aparecen como
+      "<5" para proteger la privacidad. Debe advertirse siempre al usuario
+      final cuando se muestren cifras desagregadas.
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

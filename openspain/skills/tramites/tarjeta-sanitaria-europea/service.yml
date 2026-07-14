@@ -1,0 +1,54 @@
+name: tarjeta-sanitaria-europea
+display_name: Tarjeta Sanitaria Europea (TSE)
+description: >
+  Guía completa sobre la Tarjeta Sanitaria Europea (TSE): qué es, qué
+  cubre y qué no durante viajes por la UE/EEE/Suiza, cómo solicitarla
+  (sede electrónica, Import@ss, teléfono, presencial), validez de 2 años,
+  Certificado Provisional Sustitutorio (CPS), diferencia con seguro de
+  viaje privado, quién tiene derecho y qué hacer si te pones enfermo en
+  Europa sin TSE.
+organization: Instituto Nacional de la Seguridad Social (INSS) / Tesorería General de la Seguridad Social (TGSS)
+tags: [TSE, tarjeta sanitaria europea, EHIC, sanidad, viaje, UE, EEE, Suiza, CPS, certificado provisional, Seguridad Social]
+
+links:
+  sede_seg_social: https://sede.seg-social.gob.es
+  importass: https://importass.seg-social.es
+
+license:
+  data: Información pública de la Seguridad Social
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación. No tramita tarjetas ni accede
+    al sistema de la Seguridad Social. La solicitud se realiza en la
+    sede electrónica de la Seguridad Social, Import@ss, por teléfono o
+    presencialmente. Redirige a sanidad para el sistema sanitario
+    general y a seguridad-social para cotizaciones y prestaciones.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué es la TSE y en qué países es válida (31 países)
+    - Qué cubre (asistencia pública necesaria) y qué no (privada, repatriación)
+    - Cómo solicitarla (online, teléfono, presencial)
+    - Validez (2 años) y renovación
+    - Certificado Provisional Sustitutorio (CPS) para viajes inminentes
+    - Comparación TSE vs. seguro de viaje privado
+    - Quién tiene derecho a la TSE
+    - Qué hacer si enfermas en Europa sin TSE (reembolso)
+  not_accessible:
+    - Solicitud real de la TSE (requiere identificación en sede electrónica)
+    - Estado de solicitudes en curso
+    - Información sobre el sistema sanitario español (usar skill sanidad)
+    - Cotizaciones y prestaciones de la Seguridad Social (usar skill seguridad-social)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

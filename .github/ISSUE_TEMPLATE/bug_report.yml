@@ -1,0 +1,39 @@
+name: "\U0001F41B Bug report"
+description: Reportar un error en una skill o en la documentación
+labels: ["bug"]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill afectada
+      description: Nombre de la skill (ej. boe, fiscalidad-iva, catastro)
+      placeholder: boe
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción del problema
+      description: Qué ocurre y qué debería ocurrir
+      placeholder: |
+        **Qué ocurre**: El smoke test de `boe` falla con HTTP 404 en la URL del sumario.
+        **Qué debería ocurrir**: Debería devolver HTTP 200.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Pasos para reproducir
+      description: Cómo se puede reproducir el problema
+      placeholder: |
+        1. Ejecutar `bash skills/boe/tests/smoke.sh`
+        2. Ver el error en la segunda URL
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto adicional
+      description: Agente usado, sistema operativo, logs, capturas, etc.
+    validations:
+      required: false

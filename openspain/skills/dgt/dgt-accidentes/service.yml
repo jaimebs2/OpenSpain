@@ -1,0 +1,83 @@
+name: dgt-accidentes
+display_name: DGT — Accidentes de Tráfico
+description: >
+  Microdatos de accidentes de tráfico con víctimas en carreteras españolas publicados
+  por la Dirección General de Tráfico: localización, gravedad, tipo de vía, vehículos
+  implicados, causas probables. Datos anuales en formato XLS/XLSX desde datos.gob.es.
+organization: Dirección General de Tráfico (DGT)
+tags: [DGT, accidentes, tráfico, seguridad vial, carreteras, siniestralidad, microdatos]
+
+links:
+  website: https://www.dgt.es
+  dgt_en_cifras: https://www.dgt.es/menusecundario/dgt-en-cifras/dgt-en-cifras-resultados/
+  datos_gob_es: https://datos.gob.es/en/catalogo?publisher_org=E00130502
+  terms: https://www.dgt.es/aviso-legal/
+  license_page: https://datos.gob.es/avisolegal
+
+license:
+  data: Reutilización de información del sector público (Ley 37/2007)
+  code: MIT
+
+api:
+  type: datos-gob-es-static
+  base_urls:
+    catalog: https://datos.gob.es/es/catalogo
+    files: https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: Sin límite documentado. Los ficheros XLSX pesan entre 17 y 24 MB por año.
+  stability: stable
+
+data:
+  scope:
+    national: true
+    temporal_coverage: "desde 2010 aproximadamente; disponible en datos.gob.es desde 2020; actualización anual"
+  datasets:
+    - year: 2024
+      catalog_url: https://datos.gob.es/en/catalogo/e00130502-ficheros-de-microdatos-de-accidentes-con-victimas-2024
+      download_url: https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/publicaciones/Ficheros_microdatos_de_accidentalidad_con_victimas/TABLA_ACCIDENTES_24.XLSX
+      format: XLSX
+      size_mb: 24.18
+      updated: "2025-11-04"
+    - year: 2023
+      catalog_url: https://datos.gob.es/en/catalogo/e00130502-ficheros-microdatos-de-accidentes-con-victimas-2023
+      download_url: https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/TABLA_ACCIDENTES_23.XLSX
+      format: XLSX
+      size_mb: 24.05
+      updated: "2024-10-16"
+    - year: 2022
+      catalog_url: https://datos.gob.es/en/catalogo/e00130502-ficheros-microdatos-de-accidentes-con-victimas-2022
+      download_url: https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/TABLA_ACCIDENTES_22.xlsx
+      format: XLSX
+      size_mb: 23.18
+      updated: "2024-02-07"
+    - year: 2020
+      catalog_url: https://datos.gob.es/en/catalogo/e00130502-ficheros-microdatos-de-accidentes-con-victimas-2020
+      download_url: https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/TABLA_ACCIDENTES_20.xlsx
+      format: XLSX
+      size_mb: 17.16
+      updated: "2020-12-31"
+  dictionary_url: https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/24h/Diccionario_Tabla_Accidentes.xlsx
+  accessible:
+    - Microdatos de accidentes con víctimas (un registro por accidente)
+    - Fecha y hora del accidente
+    - Localización (provincia, municipio, carretera, punto kilométrico)
+    - Tipo de vía (autopista, autovía, carretera convencional, vía urbana)
+    - Gravedad (fallecidos en 24h, fallecidos en 30 días, heridos hospitalizados, heridos leves)
+    - Número de vehículos implicados
+    - Condiciones meteorológicas en el momento del accidente
+    - Luminosidad (día, noche, crepúsculo)
+    - Estado de la calzada (seco, mojado, con hielo...)
+    - Causa probable del accidente
+  not_accessible:
+    - Datos en tiempo real (publicación anual con varios meses de retraso)
+    - Microdatos de conductores y pasajeros implicados (fichero separado, no siempre publicado)
+    - Datos anteriores a 2010 en formato abierto estructurado
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

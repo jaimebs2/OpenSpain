@@ -1,0 +1,72 @@
+name: cte
+display_name: Código Técnico de la Edificación (CTE)
+description: >
+  Marco normativo de las exigencias básicas de calidad de los edificios
+  en España (RD 314/2006): ámbito de aplicación (obra nueva, reforma,
+  cambio de uso), los seis Documentos Básicos (DB-SE seguridad
+  estructural, DB-SI incendio, DB-SUA utilización y accesibilidad,
+  DB-HS salubridad con HS6 radón, DB-HR ruido, DB-HE ahorro de energía),
+  municipios en zona de radón (apéndice B del DB-HS), zonas climáticas
+  (anejo B del DB-HE) y consulta del texto consolidado vía la API del BOE.
+organization: Ministerio de Vivienda y Agenda Urbana
+tags: [edificación, construcción, CTE, documentos básicos, seguridad estructural, incendios, accesibilidad, salubridad, radón, ruido, ahorro de energía, zonas climáticas, obra nueva, reforma]
+
+agent_accessibility: 3
+auth_owner: none
+
+links:
+  codigotecnico: https://www.codigotecnico.org
+  rd_314_2006_consolidado: https://www.boe.es/buscar/act.php?id=BOE-A-2006-5515
+  db_se: https://www.codigotecnico.org/pdf/Documentos/SE/DBSE.pdf
+  db_si: https://www.codigotecnico.org/pdf/Documentos/SI/DBSI.pdf
+  db_sua: https://www.codigotecnico.org/pdf/Documentos/SUA/DBSUA.pdf
+  db_hs: https://www.codigotecnico.org/pdf/Documentos/HS/DBHS.pdf
+  db_hr: https://www.codigotecnico.org/pdf/Documentos/HR/DBHR.pdf
+  db_he: https://www.codigotecnico.org/pdf/Documentos/HE/DBHE.pdf
+  guia_radon: https://www.codigotecnico.org/Guias/GuiaRadon.html
+
+license:
+  data: >
+    Textos normativos sin propiedad intelectual (art. 13 Ley de Propiedad
+    Intelectual) — reutilización libre, incluida la comercial.
+  code: MIT
+reuse_commercial: "yes"
+reuse_notes: >
+  Las disposiciones legales y reglamentarias (RD 314/2006 y sus
+  Documentos Básicos) no son objeto de propiedad intelectual (art. 13
+  LPI). Los PDFs se descargan del portal oficial codigotecnico.org
+  (Ministerio de Vivienda y Agenda Urbana) y el texto consolidado del BOE
+  bajo su régimen general de reutilización.
+reuse_audited_at: "2026-07-10"
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación. No accede a APIs propias: enlaza
+    los PDFs oficiales de los Documentos Básicos en codigotecnico.org y
+    usa la API de datos abiertos del BOE (patrón de la skill boe) para el
+    texto consolidado del RD 314/2006 (BOE-A-2006-5515).
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué es el CTE y su estructura (Parte I + Documentos Básicos)
+    - Ámbito de aplicación (obra nueva, reforma, ampliación, cambio de uso)
+    - Qué regula cada Documento Básico (SE, SI, SUA, HS, HR, HE) y su PDF oficial
+    - Municipios en zona de radón I/II (apéndice B del DB-HS, sección HS6)
+    - Zonas climáticas por provincia y altitud (anejo B del DB-HE)
+    - Texto consolidado del RD 314/2006 vía API del BOE
+  not_accessible:
+    - Normativa urbanística y licencias municipales (usar skill emprendimiento-licencias-actividad)
+    - Certificado energético de un inmueble concreto (registros autonómicos, sin fuente)
+    - Cálculo o verificación de cumplimiento de un proyecto (requiere técnico competente)
+    - Código Estructural (RD 470/2021) y normativa de instalaciones (RITE, REBT) en detalle
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

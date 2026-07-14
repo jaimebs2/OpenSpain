@@ -1,0 +1,57 @@
+name: clave
+display_name: Sistema Cl@ve — Guía Completa
+description: >
+  Guía completa del sistema Cl@ve de identificación electrónica del
+  Gobierno de España: modalidades (Cl@ve PIN, Cl@ve Permanente, Cl@ve
+  Firma), proceso de registro (presencial, videollamada, certificado
+  digital), activación de la app, gestión de contraseña, trámites que
+  admite cada modalidad, problemas frecuentes y comparativa con el
+  certificado digital FNMT y el DNI electrónico.
+organization: Secretaría General de Administración Digital (SGAD) — Gobierno de España
+tags: [identidad digital, Cl@ve, Clave PIN, Clave Permanente, identificación electrónica, administración electrónica, trámites online, firma en la nube]
+
+links:
+  website: https://clave.gob.es
+  que_es: https://clave.gob.es/clave_Home/clave.html
+  registro: https://clave.gob.es/clave_Home/registro.html
+
+license:
+  data: Información pública del Gobierno de España
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill puramente informativa y de orientación. No accede a APIs ni
+    gestiona cuentas de Cl@ve. Proporciona guía completa sobre el
+    sistema Cl@ve, sus modalidades, registro y uso. Redirige a las skills
+    identidad-digital-certificado-digital, identidad-digital-dnie e
+    identidad-digital-autofirma para otros medios de identificación y firma.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué es Cl@ve y cómo funciona el sistema
+    - Diferencias entre Cl@ve PIN, Permanente y Firma
+    - Proceso de registro completo (presencial, videollamada, con certificado)
+    - Activación y uso de la app Cl@ve
+    - Gestión de contraseña de Cl@ve Permanente
+    - Trámites de la AGE que admiten cada modalidad
+    - Comparativa con certificado FNMT y DNI electrónico
+    - Problemas frecuentes y soluciones
+  not_accessible:
+    - Gestión real de la cuenta Cl@ve (requiere acceso al portal)
+    - Datos personales del ciudadano
+    - Trámites de comunidades autónomas no adheridas
+    - Información sobre el certificado digital FNMT (usar skill certificado-digital)
+    - Información sobre el DNI electrónico (usar skill dnie)
+    - Firma de documentos locales (usar skill autofirma)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

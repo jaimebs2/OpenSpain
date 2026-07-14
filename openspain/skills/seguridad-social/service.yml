@@ -1,0 +1,53 @@
+name: seguridad-social
+display_name: Tesorería General de la Seguridad Social
+description: >
+  Descubre y descarga datasets de la Seguridad Social española (afiliación
+  por régimen y CCAA, pensiones contributivas y no contributivas por tipo,
+  altas y bajas mensuales, empresas inscritas) a través del catálogo nacional
+  datos.gob.es. Nunca intenta scrapear seg-social.es.
+organization: Ministerio de Inclusión, Seguridad Social y Migraciones
+tags: [seguridad social, afiliación, pensiones, cotización, jubilación, altas, bajas, TGSS]
+
+links:
+  website: https://www.seg-social.es
+  docs: https://datos.gob.es/es/apidata
+  terms: https://datos.gob.es/es/aviso-legal
+
+license:
+  data: Ley 37/2007 de reutilización de la información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    catalogo: https://datos.gob.es/apidata/catalog/dataset
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Afiliación a la Seguridad Social por régimen de cotización y CCAA
+    - Afiliaciones al Régimen General, Autónomos, Agrario, Mar y Hogar
+    - Pensiones contributivas por tipo (jubilación, viudedad, incapacidad)
+    - Pensiones no contributivas e importes medios por territorio
+    - Altas y bajas mensuales de afiliación por régimen y sexo
+    - Empresas inscritas en la Seguridad Social por actividad y tamaño
+    - URLs reales de descarga (CSV, JSON, XLSX) extraídas de datos.gob.es
+  not_accessible:
+    - Datos individuales de afiliados o pensionistas (protegidos)
+    - Gestión de trámites (alta, baja, vida laboral) en tiempo real
+    - Trámites autenticados con certificado digital o Cl@ve en sede.seg-social.gob.es
+    - Base reguladora individual o cuantía personal de una pensión concreta
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

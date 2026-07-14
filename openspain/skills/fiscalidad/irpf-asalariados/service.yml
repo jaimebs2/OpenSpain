@@ -1,0 +1,59 @@
+name: fiscalidad-irpf-asalariados
+display_name: Fiscalidad -- IRPF para Asalariados (Declaracion de la Renta)
+description: >
+  Guia completa del IRPF para trabajadores asalariados en Espana:
+  obligacion de declarar (limites 22.000/15.876 EUR), tramos del IRPF
+  (escala estatal y autonomica), borrador y Renta Web, principales
+  deducciones (vivienda, maternidad, familia numerosa, planes de
+  pensiones, donativos), tipos de rendimientos (trabajo, capital,
+  ganancias patrimoniales), minimo personal y familiar, regla de los
+  dos pagadores, plazos de la campana de Renta, y resultado a pagar
+  o a devolver.
+organization: Agencia Estatal de Administracion Tributaria (AEAT)
+tags: [fiscalidad, IRPF, renta, asalariados, declaracion renta, borrador, Renta Web, tramos, deducciones, campana renta, AEAT]
+
+links:
+  website: https://sede.agenciatributaria.gob.es/Sede/irpf.html
+  calendario: https://sede.agenciatributaria.gob.es/Sede/ayuda/calendario-contribuyente/calendario-contribuyente-2026.html
+
+license:
+  data: Informacion publica de la AEAT
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientacion general sobre el IRPF para
+    asalariados y la Declaracion de la Renta. No accede a APIs de datos
+    ni a la Sede Electronica para tramites. Diferencia clave con
+    fiscalidad-irpf-autonomos: esta skill cubre la declaracion anual
+    del asalariado, no los pagos fraccionados trimestrales del autonomo.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Limites de obligacion de declarar (22.000/15.876 EUR)
+    - Tramos del IRPF (escala estatal; indicacion de variabilidad autonomica)
+    - Borrador y Renta Web (como acceder, revisar y presentar)
+    - Principales deducciones estatales y autonomicas
+    - Tipos de rendimientos (trabajo, capital mobiliario/inmobiliario, ganancias patrimoniales)
+    - Minimo personal y familiar
+    - Regla de los dos pagadores
+    - Plazos de la campana de Renta
+    - Resultado a pagar o a devolver, fraccionamiento
+    - Rectificacion de autoliquidacion
+  not_accessible:
+    - Presentacion real de declaraciones (requiere certificado digital/Clave)
+    - Datos fiscales individuales del contribuyente
+    - Escala autonomica detallada de cada CCAA
+    - Pagos fraccionados trimestrales de autonomos (usar skill fiscalidad-irpf-autonomos)
+    - IVA (usar skill fiscalidad-iva)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

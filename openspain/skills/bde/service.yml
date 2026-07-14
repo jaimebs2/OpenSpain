@@ -1,0 +1,50 @@
+name: bde
+display_name: Banco de España — Estadísticas BIEst
+description: >
+  Estadísticas económicas y financieras del Banco de España: tipos de interés
+  (Euribor, tipos oficiales), balanza de pagos, deuda pública, déficit público,
+  indicadores monetarios y bancarios. Acceso vía API BIEst REST.
+organization: Banco de España
+tags: [banco de españa, estadísticas, tipos de interés, euribor, macroeconomía, finanzas, deuda pública, balanza de pagos]
+
+links:
+  website: https://www.bde.es/wbe/en/estadisticas/
+  docs: https://www.bde.es/webbe/en/estadisticas/recursos/api-estadisticas-bde.html
+  terms: https://www.bde.es/bde/es/footer/nota-legal/
+
+license:
+  data: Banco de España — consultar condiciones de uso en nota legal
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    bierest: https://app.bde.es/bierest/resources/srdatosapp
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - "Tipos de interés: Euribor (1 año, 3 meses), tipos hipotecarios"
+    - "Deuda pública: deuda EDP del sector público (% PIB)"
+    - "Déficit público: déficit del sector público (% PIB)"
+    - "Balanza de pagos: bienes, servicios, rentas (en M€)"
+    - Series históricas con frecuencias diaria, mensual, trimestral y anual
+    - "Metadatos de series: descripción, unidades, fuente, rango histórico"
+  not_accessible:
+    - Series que requieren autenticación o acceso institucional
+    - Microdatos de entidades financieras individuales
+    - Datos del Registro Central de Información de Riesgos (CIRBE) individualizados
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

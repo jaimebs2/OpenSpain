@@ -1,0 +1,52 @@
+name: empadronamiento
+display_name: Empadronamiento — Padrón Municipal
+description: >
+  Guía completa sobre el empadronamiento en España: qué es el padrón
+  municipal, cómo inscribirse, documentación necesaria, diferencia entre
+  volante y certificado de empadronamiento, cambio de domicilio, casos
+  especiales (extranjeros, personas sin hogar) y su importancia para
+  trámites de extranjería, sanidad, educación y voto.
+organization: Ayuntamientos de España / Instituto Nacional de Estadística (INE)
+tags: [empadronamiento, padrón municipal, volante, certificado, domicilio, registro vecinal, ayuntamiento, extranjeros, arraigo]
+
+links:
+  ine_padron: https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736177012&menu=ultiDatos&idp=1254734710990
+  sede_madrid: https://sede.madrid.es
+  sede_barcelona: https://seuelectronica.ajuntament.barcelona.cat
+
+license:
+  data: Información pública de administraciones locales y estatal
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación. No accede a bases de datos
+    padronales ni realiza inscripciones. El empadronamiento es un trámite
+    municipal que se gestiona en cada ayuntamiento.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué es el padrón municipal y por qué es obligatorio
+    - Cómo empadronarse (presencial y online)
+    - Documentación necesaria (españoles y extranjeros)
+    - Diferencia entre volante y certificado de empadronamiento
+    - Cambio de domicilio (mismo municipio y entre municipios)
+    - Empadronamiento sin domicilio fijo (personas sin hogar)
+    - Importancia del padrón para trámites de extranjería (arraigo, nacionalidad)
+    - Preguntas frecuentes sobre el empadronamiento
+  not_accessible:
+    - Datos individuales del padrón (protegidos por LOPD)
+    - Inscripción real en el padrón (trámite municipal presencial o por sede electrónica del ayuntamiento)
+    - Información específica de cada ayuntamiento (horarios, direcciones exactas)
+    - Trámites de extranjería detallados (usar skills extranjeria-nie, extranjeria-nacionalidad)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

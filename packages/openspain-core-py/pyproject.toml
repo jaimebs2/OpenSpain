@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openspain-core"
+version = "0.0.0"
+description = "Tipos compartidos, validadores y mapeo de errores para los MCPs de OpenSpain"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [
+  { name = "OpenSpain contributors" },
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/oneprompteu/openspain"
+
+[tool.setuptools.packages.find]
+where = ["src"]

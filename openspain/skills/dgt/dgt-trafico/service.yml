@@ -1,0 +1,62 @@
+name: dgt-trafico
+display_name: DGT — Tráfico en Tiempo Real
+description: >
+  Estado del tráfico en tiempo real en carreteras españolas publicado por la DGT
+  a través del NAP (Nodo de Acceso Nacional): incidencias, restricciones, obras,
+  condiciones de circulación por tramo de carretera y estado de paneles
+  informativos de tráfico.
+organization: Dirección General de Tráfico (DGT)
+tags: [DGT, tráfico, tiempo real, incidencias, carreteras, NAP, DATEX2]
+
+links:
+  website: https://www.dgt.es/conoce-el-estado-del-trafico/informacion-e-incidencias-de-trafico/
+  nap: https://nap.dgt.es
+  mapa_trafico: https://infocar.dgt.es/etraffic/
+  dataset_incidencias: https://nap.dgt.es/dataset/incidencias-dgt-datex2-v3-6
+  dataset_paneles: https://nap.dgt.es/dataset/paneles-dgt-tiempo-real
+
+license:
+  data: Reutilización de la información del sector público (Ley 37/2007)
+  notes: >
+    Datos de libre acceso publicados en el NAP conforme al Reglamento
+    (UE) 2015/962 sobre servicios de información de tráfico en tiempo real.
+
+api:
+  type: rest-xml
+  base_url: https://infocar.dgt.es/datex2
+  auth:
+    required: false
+    notes: Acceso abierto, sin autenticación.
+  format: DATEX II v3 (XML)
+  stability: stable
+  endpoints:
+    incidencias_v3:
+      url: https://infocar.dgt.es/datex2/v3/dgt/SituationPublication/incidencias.xml
+      description: Incidencias en carreteras de la red viaria estatal (excepto Euskadi y Cataluña). Actualización continua 24h por la Guardia Civil de Tráfico y Centros de Gestión del Tráfico.
+      format: DATEX II v3 XML (SituationPublication)
+    paneles_tiempo_real:
+      url: https://infocar.dgt.es/datex2/dgt/SituationPublication/paneles/content.xml
+      description: Estado en tiempo real de los paneles de información variable de la red viaria estatal.
+      format: DATEX II XML
+
+data:
+  scope:
+    national: true
+    exclusions:
+      - País Vasco (Ertzaintza gestiona su propia red)
+      - Cataluña (Mossos d'Esquadra gestiona su propia red)
+  accessible:
+    - Incidencias de tráfico en tiempo real (accidentes, obras, retenciones, restricciones)
+    - Estado de paneles informativos de tráfico en carretera
+    - Datos en formato DATEX II estándar europeo (XML)
+  not_accessible:
+    - Datos de aforos / intensidad de tráfico (IMD) en tiempo real por este endpoint
+    - Cámaras de tráfico (imágenes) — solo metadatos de localización disponibles
+    - Red autonómica de Euskadi y Cataluña
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false
+    requires_env: []

@@ -1,0 +1,59 @@
+name: autofirma
+display_name: AutoFirma y Firma Electrónica — Guía Completa
+description: >
+  Guía completa de AutoFirma (aplicación de firma electrónica del Gobierno
+  de España) y del marco de firma electrónica en España: tipos de firma
+  (simple, avanzada, cualificada) según el Reglamento eIDAS, descarga e
+  instalación de AutoFirma en Windows/macOS/Linux, cómo firmar documentos
+  localmente y desde sedes electrónicas, formatos de firma (XAdES, CAdES,
+  PAdES), validación de firmas con VALIDe, problemas frecuentes de
+  instalación y uso.
+organization: Secretaría General de Administración Digital (SGAD) — Gobierno de España
+tags: [firma electrónica, AutoFirma, identidad digital, firma digital, eIDAS, firma cualificada, VALIDe, certificado digital, administración electrónica]
+
+links:
+  website: https://firmaelectronica.gob.es/Home/Descargas.html
+  documentacion: https://administracionelectronica.gob.es/ctt/clienteafirma
+  valide: https://valide.redsara.es
+
+license:
+  data: Información pública del Gobierno de España
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill puramente informativa y de orientación. No firma documentos ni
+    accede a certificados. Proporciona guía completa sobre AutoFirma, tipos
+    de firma electrónica, instalación, uso y validación. Redirige a las
+    skills identidad-digital-certificado-digital e identidad-digital-dnie
+    para la obtención de certificados necesarios para firmar, y a
+    identidad-digital-clave para Cl@ve Firma como alternativa.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué es AutoFirma y cómo funciona
+    - Tipos de firma electrónica según eIDAS (simple, avanzada, cualificada)
+    - Descarga e instalación en Windows, macOS y Linux
+    - Firma local de documentos (PDF, XML) paso a paso
+    - Integración con sedes electrónicas de la Administración
+    - Formatos de firma (XAdES, CAdES, PAdES, FacturaE)
+    - Validación de firmas y certificados con VALIDe
+    - Problemas frecuentes de instalación y uso
+    - Marco legal de la firma electrónica en España
+  not_accessible:
+    - Firma real de documentos (requiere AutoFirma + certificado)
+    - Gestión de certificados digitales (usar skill certificado-digital)
+    - Información sobre el DNI electrónico (usar skill dnie)
+    - Información sobre Cl@ve (usar skill clave)
+    - Desarrollo técnico contra la API de @firma
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

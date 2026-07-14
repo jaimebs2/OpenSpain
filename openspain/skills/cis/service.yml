@@ -1,0 +1,55 @@
+name: cis
+display_name: Centro de Investigaciones Sociológicas
+description: >
+  Descubrimiento de estudios, barómetros y encuestas del Centro de
+  Investigaciones Sociológicas (CIS) y otras encuestas de opinión pública
+  españolas a través del catálogo nacional datos.gob.es y referencias al
+  catálogo web del CIS por número de estudio.
+organization: Ministerio de la Presidencia, Justicia y Relaciones con las Cortes
+tags: [encuestas, opinión pública, barómetro, sondeos, sociología, intención de voto, CIS]
+
+links:
+  website: https://www.cis.es
+  catalogo: https://www.cis.es/estudios/catalogo
+  docs: https://datos.gob.es/es/apidata
+  terms: https://www.cis.es/es/condiciones-reutilizaci%C3%B3n-datos-del-cis
+
+license:
+  data: Ley 37/2007 de reutilización de la información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    catalogo: https://datos.gob.es/apidata/catalog/dataset
+    cis_web: https://www.cis.es
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado en datos.gob.es. Uso responsable
+      recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Búsqueda de datasets relacionados con el CIS y barómetros en datos.gob.es
+      (búsqueda por título "CIS", "barómetro", "encuesta", "sondeo")
+    - Referencia al catálogo web del CIS por número de estudio
+      (https://www.cis.es/estudios/catalogo)
+    - URLs reales de descarga (CSV, JSON, XLS) cuando los datasets están
+      indexados en el catálogo nacional
+  not_accessible:
+    - API REST pública propia del CIS (no existe)
+    - Microdatos individuales (ASCII/CSV/SPSS) — requieren descarga manual
+      desde la ficha del estudio en cis.es y procesamiento local con código
+    - Cuestionarios y resultados publicados solo en PDF en la ficha del estudio
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

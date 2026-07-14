@@ -1,0 +1,54 @@
+name: laboral-nominas
+display_name: Cómo leer una nómina
+description: >
+  Guía práctica para entender una nómina española: estructura (devengos
+  y deducciones), salario base y complementos, pagas extraordinarias,
+  cotizaciones del trabajador a la Seguridad Social, retención del IRPF,
+  base y grupos de cotización, líquido a percibir, Salario Mínimo
+  Interprofesional (SMI), nocturnidad, horas extra e incapacidad temporal.
+organization: Ministerio de Trabajo y Economía Social / Tesorería General de la Seguridad Social
+tags: [laboral, nómina, salario, devengos, deducciones, cotización, IRPF, SMI, pagas extra, Seguridad Social, base de cotización]
+
+links:
+  estatuto_trabajadores: https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430
+  seg_social_cotizacion: https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/CotizacionRecworkeraudacionTrabajadores
+
+license:
+  data: Información pública del Ministerio de Trabajo y Seguridad Social
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación sobre la estructura de una nómina
+    española. No accede a APIs de datos. Explica conceptos salariales,
+    cotizaciones y retenciones con fines divulgativos. Los porcentajes de
+    cotización se actualizan anualmente.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Estructura de una nómina (devengos, deducciones, líquido)
+    - Percepciones salariales y no salariales
+    - Cotizaciones del trabajador a la Seguridad Social (porcentajes orientativos)
+    - Base de cotización y grupos de cotización
+    - Retención del IRPF en nómina (rangos orientativos)
+    - Salario Mínimo Interprofesional (SMI) vigente
+    - Pagas extraordinarias, nocturnidad, horas extra
+    - Incapacidad temporal (IT) en la nómina
+    - Ejemplo práctico simplificado de nómina
+  not_accessible:
+    - Cálculo exacto de la nómina individual de cada trabajador
+    - Tablas salariales de convenios concretos (usar skill laboral-convenios)
+    - Tipos de contrato (usar skill laboral-contratos)
+    - Prestación por desempleo (usar skill laboral-desempleo)
+    - Detalle de cotizaciones empresariales (usar skill seguridad-social)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

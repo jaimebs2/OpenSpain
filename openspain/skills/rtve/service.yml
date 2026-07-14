@@ -1,0 +1,60 @@
+name: rtve
+display_name: Radio Televisión Española
+description: >
+  Consulta el catálogo de RTVE: noticias, programas (TV y radio), vídeos, audios
+  y cadenas (TVE, RNE, Radio Clásica, Teledeporte, etc.). Acceso de solo lectura
+  al backend público que alimenta www.rtve.es.
+organization: Corporación de Radio y Televisión Española (CRTVE)
+tags: [medios, audiovisual, televisión, radio, noticias, archivo, RNE, TVE]
+
+links:
+  website: https://www.rtve.es
+  docs: https://www.rtve.es/api/
+  terms: https://www.rtve.es/aviso-legal/
+
+license:
+  data: >
+    Contenido propiedad de CRTVE. La API no tiene términos de reutilización
+    publicados; uso responsable y atribución recomendados. No es una API
+    oficialmente declarada como abierta.
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    api: https://api.rtve.es/api
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. La API alimenta el portal www.rtve.es;
+      uso responsable, evitar paginación masiva, throttle interno recomendado.
+  stability: unstable
+  notes: >
+    API NO oficial: descubierta vía el portal www.rtve.es y documentada por la
+    comunidad. CRTVE no publica contrato de API ni garantías de
+    compatibilidad. Endpoints, parámetros y formato pueden cambiar sin aviso.
+    Si la skill empieza a recibir 404/5xx, asumir que el endpoint se ha movido.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Listado paginado de noticias publicadas en rtve.es
+    - Listado paginado de programas (TV y radio) del catálogo RTVE
+    - Listado paginado de vídeos del archivo a la carta
+    - Catálogo de cadenas (TVE, La 1, La 2, 24H, Clan, Teledeporte, RNE, Radio Clásica, etc.)
+    - Ficha individual de noticia, programa o vídeo por id
+    - "Metadatos: título, descripción, fecha de publicación, género, cadena, URL pública"
+  not_accessible:
+    - Streams en directo (HLS/DASH) — requieren otra capa
+    - Audiencias / datos Kantar más allá del id expuesto
+    - Búsqueda full-text fiable (los parámetros de filtro suelen ser ignorados; la API se comporta como listado paginado)
+    - Métricas privadas o información de subscriptores
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

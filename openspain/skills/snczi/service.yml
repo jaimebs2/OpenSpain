@@ -1,0 +1,72 @@
+name: snczi
+display_name: Sistema Nacional de Cartografía de Zonas Inundables
+description: >
+  Consulta de zonas inundables, Dominio Público Hidráulico (DPH), zona de policía
+  y zona de servidumbre del SNCZI (MITECO) a partir de coordenadas, referencia
+  catastral o dirección. Usa los servicios WMS OGC públicos del Ministerio para
+  la Transición Ecológica con cobertura nacional excepto País Vasco y Navarra.
+organization: Ministerio para la Transición Ecológica y el Reto Demográfico
+tags:
+  - zonas-inundables
+  - dph
+  - dominio-publico-hidraulico
+  - zona-policia
+  - zona-servidumbre
+  - riesgo-inundacion
+  - geolocalización
+  - cartografía
+  - wms
+  - inspire
+
+links:
+  website: https://www.miteco.gob.es/es/agua/temas/gestion-de-los-riesgos-de-inundacion/snczi.html
+  viewer: https://sig.miteco.gob.es/snczi/index.html?herramienta=DPHZI
+  docs: https://www.miteco.gob.es/es/cartografia-y-sig/ide.html
+  legal: https://www.boe.es/buscar/act.php?id=BOE-A-1986-10638
+  directive: https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32007L0060
+
+license:
+  data: Licencia de uso libre compatible INSPIRE (Directiva 2007/2/CE, RD 1071/2007)
+  code: MIT
+
+api:
+  type: rest-xml
+  base_urls:
+    zi_t10: https://wms.mapama.gob.es/sig/Agua/ZI_LaminasQ10/wms.aspx
+    zi_t100: https://wms.mapama.gob.es/sig/Agua/ZI_LaminasQ100/wms.aspx
+    zi_t500: https://wms.mapama.gob.es/sig/Agua/ZI_LaminasQ500/wms.aspx
+    dph_cartografico: https://wms.mapama.gob.es/sig/Agua/DPHCartografico/wms.aspx
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Aplicar uso responsable; si se van a hacer
+      consultas masivas, cachear resultados por tile y serializar las peticiones
+      al WMS.
+  stability: stable
+
+data:
+  scope:
+    national: true
+    excludes: [País Vasco, Navarra]
+  accessible:
+    - Zonas inundables con período de retorno 10, 100 y 500 años
+    - Dominio Público Hidráulico (DPH) cartográfico
+    - Consulta puntual por coordenadas, referencia catastral o dirección
+    - Zona de policía (100 m) y servidumbre (5 m) vía buffer del DPH (MCP)
+  not_accessible:
+    - Zona de flujo preferente como capa WMS estable (solo en visor)
+    - Calado máximo y velocidades punto a punto (solo en visor)
+    - DPH probable o deslindado oficial del Registro de Aguas
+
+implementations:
+  skill:
+    available: true
+    path: skills/snczi/
+    requires_install: false
+  mcp:
+    available: true
+    path: mcps/snczi/
+    requires_install: true
+    runtime: python>=3.12

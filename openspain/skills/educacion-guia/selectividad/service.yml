@@ -1,0 +1,57 @@
+name: selectividad
+display_name: Selectividad / EBAU / EvAU — Guía de Acceso a la Universidad
+description: >
+  Guía completa de la Selectividad (EBAU/EvAU/PAU) en España: estructura del
+  examen (fase obligatoria y fase voluntaria), cómo se calcula la nota de
+  acceso (60% bachillerato + 40% fase general), cómo se calcula la nota de
+  admisión (nota de acceso + ponderaciones, máximo 14), tablas de ponderación,
+  notas de corte (qué son y dónde consultarlas), convocatoria ordinaria (junio)
+  y extraordinaria (julio), diferencias entre Comunidades Autónomas, acceso
+  para mayores de 25, 40 y 45 años, y preinscripción universitaria.
+organization: Ministerio de Educación, Formación Profesional y Deportes (MEC) / Universidades
+tags: [educación, selectividad, EBAU, EvAU, PAU, nota de corte, nota de acceso, nota de admisión, universidad, acceso, ponderaciones, bachillerato]
+
+links:
+  website: https://www.educacionfpydeportes.gob.es
+  notas_corte: https://www.universidades.gob.es/que-estudiar-y-donde-qedu/
+
+license:
+  data: Información pública del Ministerio de Educación y universidades
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación sobre el sistema de acceso a la
+    universidad en España. No accede a APIs de datos. Proporciona información
+    sobre estructura, cálculo de notas, notas de corte orientativas y
+    convocatorias. Redirige a skills específicas (educacion, becas-mec, fp,
+    boe) para consultas relacionadas.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Estructura del examen de Selectividad (fases obligatoria y voluntaria)
+    - Cálculo de la nota de acceso (fórmula 60/40)
+    - Cálculo de la nota de admisión (ponderaciones, máximo 14)
+    - Notas de corte orientativas por tipo de grado
+    - Convocatorias ordinaria (junio) y extraordinaria (julio)
+    - Diferencias entre Comunidades Autónomas
+    - Acceso para mayores de 25, 40 y 45 años
+    - Proceso de preinscripción universitaria
+    - Dónde consultar notas de corte y ponderaciones
+  not_accessible:
+    - Notas de corte en tiempo real de un grado/universidad concretos
+    - Resultados individuales de exámenes
+    - Datos estadísticos educativos (usar skill educacion)
+    - Información sobre becas (usar skill becas-mec)
+    - Texto de normativa educativa (usar skill boe)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

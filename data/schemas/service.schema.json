@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jaimebs2/OpenSpain/data/schemas/service.schema.json",
+  "title": "OpenSpain service.yml",
+  "description": "Schema canónico de service.yml en una skill, MCP o tool de OpenSpain. Ver docs/architecture/service-yml-schema.md para documentación legible.",
+  "type": "object",
+  "required": ["name", "display_name", "description", "organization", "api", "license", "links"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "Identificador kebab-case que coincide con el nombre del directorio."
+    },
+    "display_name": { "type": "string" },
+    "description": { "type": "string" },
+    "organization": { "type": "string" },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "agent_accessibility": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 5,
+      "description": "Nivel 0–5 según tipología en ADR-0001."
+    },
+    "auth_owner": {
+      "enum": ["none", "app", "citizen"]
+    },
+    "reuse_commercial": {
+      "enum": ["yes", "conditions", "no"],
+      "description": "Sólo obligatorio para skills con agent_accessibility=2 (APIs con clave)."
+    },
+    "reuse_notes": { "type": "string" },
+    "reuse_audited_at": { "type": "string", "format": "date" },
+    "cache_ttl_seconds": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "TTL declarativo respetado por el middleware de caché del MCP."
+    },
+    "proxy_of": {
+      "type": "string",
+      "description": "Nombre de otra skill cuyo contenido este alias filtra temáticamente."
+    },
+    "proxy_notes": { "type": "string" },
+    "api": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": [
+            "knowledge",
+            "rest-json",
+            "rest-xml",
+            "soap",
+            "ckan",
+            "sparql",
+            "thredds-opendap",
+            "static-files",
+            "xml-static",
+            "xlsx-download",
+            "datos-gob-es-static",
+            "mixed",
+            "meta-skill"
+          ]
+        },
+        "auth": {
+          "type": "object",
+          "properties": {
+            "required": { "type": "boolean" }
+          }
+        },
+        "rate_limit": {
+          "type": "object",
+          "properties": {
+            "documented": { "type": "boolean" },
+            "notes": { "type": "string" }
+          }
+        },
+        "notes": { "type": "string" }
+      }
+    },
+    "license": {
+      "type": "object",
+      "properties": {
+        "data": { "type": "string" },
+        "code": { "type": "string" }
+      }
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "scope": {
+          "type": "object",
+          "properties": {
+            "national": { "type": "boolean" },
+            "autonomic": { "type": "boolean" },
+            "municipal": { "type": "boolean" }
+          }
+        },
+        "accessible": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "not_accessible": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "implementations": {
+      "type": "object",
+      "properties": {
+        "skill": {
+          "type": "object",
+          "properties": {
+            "available": { "type": "boolean" },
+            "path": { "type": "string" }
+          }
+        },
+        "mcp": {
+          "type": "object",
+          "properties": {
+            "available": { "type": "boolean" },
+            "path": { "type": "string" }
+          }
+        },
+        "tool": {
+          "type": "object",
+          "properties": {
+            "available": { "type": "boolean" },
+            "path": { "type": "string" }
+          }
+        }
+      }
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "format": "uri" }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": ["agent_accessibility"],
+        "properties": { "agent_accessibility": { "const": 2 } }
+      },
+      "then": { "required": ["reuse_commercial"] }
+    },
+    {
+      "if": {
+        "required": ["agent_accessibility"],
+        "properties": { "agent_accessibility": { "const": 0 } }
+      },
+      "then": { "properties": { "auth_owner": { "const": "none" } } }
+    },
+    {
+      "if": {
+        "required": ["agent_accessibility"],
+        "properties": { "agent_accessibility": { "const": 1 } }
+      },
+      "then": { "properties": { "auth_owner": { "const": "none" } } }
+    },
+    {
+      "if": {
+        "required": ["agent_accessibility"],
+        "properties": { "agent_accessibility": { "const": 2 } }
+      },
+      "then": { "properties": { "auth_owner": { "const": "app" } } }
+    },
+    {
+      "if": {
+        "required": ["agent_accessibility"],
+        "properties": { "agent_accessibility": { "const": 5 } }
+      },
+      "then": { "properties": { "auth_owner": { "const": "citizen" } } }
+    }
+  ]
+}

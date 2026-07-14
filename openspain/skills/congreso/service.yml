@@ -1,0 +1,53 @@
+name: congreso
+display_name: Congreso de los Diputados
+description: >
+  Consulta los datos abiertos del Congreso de los Diputados español:
+  votaciones plenarias por sesión, listado de diputados (en activo, de baja
+  e histórico por legislatura), iniciativas legislativas (proyectos de ley,
+  proposiciones de ley, leyes aprobadas) e intervenciones parlamentarias.
+organization: Congreso de los Diputados
+tags: [parlamento, votaciones, diputados, iniciativas, leyes, legislativo]
+
+links:
+  website: https://www.congreso.es
+  docs: https://www.congreso.es/es/datos-abiertos
+  terms: https://www.congreso.es/es/aviso-legal
+
+license:
+  data: Ley 37/2007 de reutilización del sector público
+  code: MIT
+
+api:
+  type: static-files
+  base_urls:
+    portal: https://www.congreso.es/es/opendata
+    files: https://www.congreso.es/webpublica/opendata
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. El servidor exige un User-Agent de
+      navegador (sin él devuelve 403). Los ficheros se regeneran a diario
+      con un timestamp en el nombre, por lo que la URL definitiva debe
+      descubrirse parseando la página índice correspondiente.
+  stability: partial
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Votaciones plenarias por legislatura, sesión y fecha (XML/JSON/PDF/ZIP)
+    - Diputados en activo, de baja e histórico por legislatura (CSV/JSON/XML)
+    - Iniciativas legislativas aprobadas, proyectos y proposiciones de ley (CSV/JSON/XML)
+    - Intervenciones parlamentarias por iniciativa y cronológicas (CSV/JSON/XML)
+  not_accessible:
+    - Búsqueda libre por texto (no hay endpoint API real, solo descargas)
+    - Órganos del Congreso (solo accesibles vía portlet Liferay dinámico)
+    - Diario de Sesiones a texto plano (solo enlaces a PDF en boe.es)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

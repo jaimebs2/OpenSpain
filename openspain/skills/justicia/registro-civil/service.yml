@@ -1,0 +1,57 @@
+name: registro-civil
+display_name: Registro Civil — Certificados y Trámites
+description: >
+  Guía completa sobre el Registro Civil en España: certificados de
+  nacimiento, matrimonio y defunción (literal y extracto), certificado
+  de últimas voluntades, antecedentes penales, certificado de delitos
+  sexuales, fe de vida y estado, libro de familia (suprimido), nuevo
+  sistema digitalizado, y cómo solicitar cada documento (online o
+  presencial).
+organization: Ministerio de Justicia
+tags: [justicia, registro civil, certificado nacimiento, certificado matrimonio, certificado defunción, últimas voluntades, antecedentes penales, fe de vida, libro de familia, sede electrónica justicia]
+
+links:
+  website: https://www.mjusticia.gob.es/es/ciudadania/estado-civil/registro-civil
+  sede_electronica: https://sede.mjusticia.gob.es
+
+license:
+  data: Información pública del Ministerio de Justicia
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación general sobre el Registro Civil
+    y certificados del Ministerio de Justicia. No accede a APIs de datos
+    ni tramita certificados. Para obtener certificados reales es necesario
+    usar la sede electrónica con certificado digital o Cl@ve.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué es el Registro Civil y qué inscribe
+    - Tipos de certificados (nacimiento, matrimonio, defunción)
+    - Certificado literal vs. extracto plurilingüe
+    - Cómo solicitar certificados (online, presencial, correo)
+    - Certificado de últimas voluntades (RGAUV)
+    - Certificado de antecedentes penales y de delitos sexuales
+    - Fe de vida y estado
+    - Libro de familia (suprimido y alternativas)
+    - Nuevo Registro Civil digitalizado (Ley 20/2011)
+    - Inscripciones habituales (nacimiento, matrimonio, defunción)
+    - Plazos y tasas
+  not_accessible:
+    - Emisión real de certificados (requiere sede electrónica con identificación)
+    - Datos de inscripciones concretas (protegidos)
+    - Tramitación de herencias (usar skill herencias)
+    - Redacción de testamentos (usar skill testamento)
+    - Trámites de extranjería (usar skill extranjeria-nacionalidad)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

@@ -1,0 +1,55 @@
+name: vida-laboral
+display_name: Vida Laboral e Import@ss
+description: >
+  Guía práctica sobre el informe de vida laboral y el portal Import@ss de la
+  Seguridad Social: qué es la vida laboral, qué contiene, para qué sirve,
+  cómo obtenerla (Import@ss, sede electrónica, SMS, presencial), qué es
+  Import@ss y qué trámites permite, informe de bases de cotización,
+  certificado de estar al corriente, número de afiliación y periodos
+  cotizados en el extranjero.
+organization: Tesorería General de la Seguridad Social (TGSS)
+tags: [seguridad social, vida laboral, Import@ss, afiliación, bases de cotización, TGSS, sede electrónica]
+
+links:
+  website: https://importass.seg-social.es
+  sede: https://sede.seg-social.gob.es
+
+license:
+  data: Información pública de la Seguridad Social
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación. No accede a datos personales ni
+    realiza trámites. Explica cómo obtener la vida laboral y qué servicios
+    ofrece Import@ss. Redirige a skills específicas (jubilacion, cotizaciones,
+    seguridad-social) para detalle complementario.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué es el informe de vida laboral y qué información contiene
+    - Para qué sirve (jubilación, empleo, hipoteca, oposiciones, etc.)
+    - Cómo obtenerla (Import@ss, sede electrónica, SMS, presencial, teléfono)
+    - Qué es Import@ss y qué trámites permite
+    - Informe de bases de cotización (qué es y cómo obtenerlo)
+    - Certificado de estar al corriente con la SS
+    - Número de afiliación a la Seguridad Social (NAF)
+    - Periodos cotizados en el extranjero (UE, convenios bilaterales)
+    - Rectificación de errores en la vida laboral
+  not_accessible:
+    - Datos personales de vida laboral del usuario (requiere identificación)
+    - Bases de cotización individuales (requiere identificación en Import@ss)
+    - Cálculo de la pensión de jubilación (usar skill jubilacion)
+    - Detalle de bases y tipos de cotización (usar skill cotizaciones)
+    - Datos estadísticos agregados (usar skill seguridad-social)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

@@ -1,0 +1,80 @@
+name: smoke-all
+
+# Ejecuta todos los smoke tests del repo (tests de skills + futuros tests de MCPs/tools).
+# Los smoke hacen HTTP contra fuentes públicas de terceros (organismos del Estado),
+# que cambian URLs, aplican rate limits y a veces caen. Por eso este job es
+# **advisory / no bloqueante**: informa pero nunca tumba el CI. El gate bloqueante
+# del repo es validate-services.yml (schema de los service.yml).
+#
+# - En pull_request corre como aviso (continue-on-error): el revisor ve el resultado
+#   pero un enlace roto de un organismo no impide mergear.
+# - Semanalmente (schedule) vigila el link rot de las fuentes oficiales.
+# - No corre en push, para que un merge a main nunca aparezca en rojo por una web
+#   de terceros caída.
+#
+# LIMITACIÓN CONOCIDA: bastantes servidores del Estado (inclusion.gob.es, circe.es,
+# eugo.es, mites.gob.es, universidades.gob.es…) bloquean por IP a los runners de
+# GitHub (datacenter/no-España) y responden HTTP 000 aquí, aunque estén operativos
+# desde una IP española. Por eso los smoke se verifican de verdad en local (ver
+# CONTRIBUTING.md) y este job es advisory. Una versión futura usará
+# un runner desde España o un checker externo, y abrirá issues automáticamente.
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+  schedule:
+    # Lunes 08:00 UTC — vigilancia semanal del link rot de las fuentes oficiales.
+    - cron: "0 8 * * 1"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Advisory: los fallos de URLs de terceros no marcan el workflow como fallido.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Smoke tests de skills (openspain/skills/**/tests/smoke.sh)
+        shell: bash
+        run: |
+          set -e
+          FAIL=0
+          shopt -s nullglob globstar
+          for f in openspain/skills/**/tests/smoke.sh; do
+            echo "→ $f"
+            if ! bash "$f"; then
+              echo "::error file=$f::smoke test failed"
+              FAIL=$((FAIL + 1))
+            fi
+          done
+          echo "---"
+          if [ "$FAIL" -gt 0 ]; then
+            echo "::error::$FAIL smoke test(s) failed"
+            exit 1
+          fi
+          echo "All smoke tests passed."
+
+      - name: Smoke tests legacy (tests/**/smoke.sh)
+        # El directorio /tests/ paralelo es deuda heredada de la convención anterior.
+        # Se mantiene en CI hasta que cada skill mueva su smoke.sh definitivamente
+        # a openspain/skills/<nombre>/tests/smoke.sh.
+        shell: bash
+        run: |
+          set -e
+          FAIL=0
+          shopt -s nullglob
+          for f in tests/*/smoke.sh; do
+            echo "→ $f"
+            if ! bash "$f"; then
+              echo "::error file=$f::legacy smoke test failed"
+              FAIL=$((FAIL + 1))
+            fi
+          done
+          echo "---"
+          if [ "$FAIL" -gt 0 ]; then
+            echo "::error::$FAIL legacy smoke test(s) failed"
+            exit 1
+          fi
+          echo "All legacy smoke tests passed."

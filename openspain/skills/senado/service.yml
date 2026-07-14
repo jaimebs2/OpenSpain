@@ -1,0 +1,59 @@
+name: senado
+display_name: Senado de España — Datos Abiertos
+description: >
+  Actividad parlamentaria del Senado español: composición del hemiciclo,
+  senadores, grupos parlamentarios, sesiones plenarias, votaciones,
+  iniciativas legislativas, mociones, interpelaciones y contratación pública.
+  Datos desde la legislatura actual (XV) y parcialmente desde 1977.
+organization: Senado de España
+tags: [parlamento, senado, legislativo, votaciones, política]
+
+links:
+  website: https://www.senado.es
+  docs: https://www.senado.es/web/relacionesciudadanos/datosabiertos/catalogodatos/index.html
+  terms: https://www.senado.es/web/relacionesciudadanos/datosabiertos/index.html
+
+license:
+  data: Reutilización condicionada — ver aviso legal del Senado
+  code: MIT
+
+api:
+  type: xml-static
+  base_urls:
+    servlet: https://www.senado.es/web/ficopendataservlet
+    contratos: https://www.senado.es/contratos/xml
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. No es una API REST: son ficheros XML
+      estáticos servidos por un servlet. Uso responsable recomendado.
+  stability: stable
+  notes: >
+    No hay REST API. Los datos se exponen como ficheros XML estáticos
+    accesibles vía GET. Responden con Content-Type text/xml; charset=UTF-8.
+    Los contratos llegan en ISO-8859-1.
+
+data:
+  scope:
+    national: true
+    temporal_coverage: "desde 1977 (histórico completo para senadores), legislatura actual (XV) para el resto"
+  accessible:
+    - Composición del hemiciclo (legislatura actual)
+    - Senadores y senadoras desde 1977
+    - Grupos parlamentarios y partidos políticos
+    - Organigrama del Senado
+    - Comisiones y ponencias
+    - Sesiones plenarias y votaciones
+    - Iniciativas legislativas, mociones e interpelaciones
+    - Contratos mayores y menores (2017–2025)
+  not_accessible:
+    - Presupuesto y ejecución (solo en CSV, no XML)
+    - Datos de legislaturas muy antiguas (cobertura parcial)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

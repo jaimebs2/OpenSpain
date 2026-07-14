@@ -1,0 +1,57 @@
+name: "\U0001F1EA\U0001F1F8 Nueva skill"
+description: Proponer una nueva skill de datos públicos o información del sector público español
+labels: ["new skill"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Tipo de skill
+      description: Las skills pueden conectar con APIs de datos o simplemente contener información/orientación
+      options:
+        - "API / dataset (conecta con una fuente de datos)"
+        - "Informativa / knowledge (orientación, normativa, trámites…)"
+        - "No estoy seguro"
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Tema, organismo o fuente
+      description: Nombre del organismo, área temática o fuente de información
+      placeholder: "Ej: Ministerio de Justicia, fiscalidad de sociedades, ayudas al alquiler…"
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL de referencia
+      description: URL de la API, dataset o página oficial relevante (si existe)
+      placeholder: https://ejemplo.gob.es
+    validations:
+      required: false
+  - type: textarea
+    id: data
+    attributes:
+      label: Qué información cubre
+      description: Describe brevemente qué datos o conocimiento debería incluir la skill
+    validations:
+      required: true
+  - type: dropdown
+    id: auth
+    attributes:
+      label: Requiere autenticación (solo si es API)
+      options:
+        - "No aplica (skill informativa)"
+        - "No"
+        - "Sí, API key gratuita"
+        - "Sí, registro previo"
+        - "No estoy seguro"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto adicional
+      description: Documentación, ejemplos de uso, limitaciones conocidas, por qué sería útil, etc.
+    validations:
+      required: false

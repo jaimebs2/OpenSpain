@@ -1,0 +1,52 @@
+name: bne
+display_name: Biblioteca Nacional de España
+description: >
+  Consulta el catálogo de autoridades y obras de la Biblioteca Nacional de
+  España como Linked Open Data: endpoint SPARQL público y dereferenciación
+  JSON-LD de recursos (personas, obras, entidades) en datos.bne.es.
+organization: Biblioteca Nacional de España
+tags: [bibliografía, biblioteca, linked-data, sparql, autoridades, libros, patrimonio]
+
+links:
+  website: https://datos.bne.es
+  docs: https://www.bne.es/es/iniciativas-proyectos/proyecto-datos-enlazados-bne
+  sparql: https://datos.bne.es/sparql
+  terms: https://www.bne.es/sites/default/files/repositorio-archivos/ayuda-datos-enlazados.pdf
+
+license:
+  data: Creative Commons CC0 — Biblioteca Nacional de España
+  code: MIT
+
+api:
+  type: sparql
+  base_urls:
+    sparql: https://datos.bne.es/sparql
+    resource: https://datos.bne.es/resource
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Endpoint Virtuoso público. Sin límite oficial publicado. Las consultas
+      sin LIMIT o que escanean todo el grafo pueden exceder el timeout del
+      servidor — usar siempre LIMIT y filtros específicos.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Consulta SPARQL sobre autoridades y registros bibliográficos de la BNE
+    - Dereferenciación de recursos por URI en JSON-LD (personas, obras, entidades)
+    - Búsqueda de autores, obras y materias por etiqueta (rdfs:label)
+    - Enlaces externos (VIAF, Wikidata) a través de propiedades seeAlso/P5024
+  not_accessible:
+    - Texto completo de las obras digitalizadas (solo metadatos)
+    - Préstamo, disponibilidad física ni ubicación en sala
+    - Búsqueda full-text sobre contenido de los libros
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

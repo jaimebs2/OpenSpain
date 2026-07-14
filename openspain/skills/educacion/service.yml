@@ -1,0 +1,52 @@
+name: educacion
+display_name: Ministerio de Educación, Formación Profesional y Deportes
+description: >
+  Descubre y descarga datasets del sistema educativo español publicados por
+  el Ministerio de Educación, comunidades autónomas y otras administraciones
+  a través del catálogo nacional datos.gob.es: directorio de centros
+  educativos, estadísticas de alumnado y matrícula, y becas y ayudas al
+  estudio.
+organization: Ministerio de Educación, Formación Profesional y Deportes
+tags: [educación, centros educativos, alumnado, matrícula, becas, universidad, FP, estadísticas educativas]
+
+links:
+  website: https://www.educacionfpydeportes.gob.es
+  docs: https://datos.gob.es/es/apidata
+  terms: https://datos.gob.es/es/aviso-legal
+
+license:
+  data: Ley 37/2007 de reutilización de la información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    catalogo: https://datos.gob.es/apidata/catalog/dataset
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Directorio y clasificaciones de centros educativos (búsqueda por título "centros educativos")
+    - Estadísticas de alumnado por nivel, etapa y titularidad del centro (búsqueda por título "alumnado")
+    - Datos de matrícula por curso y comunidad autónoma (búsqueda por título "matrícula")
+    - Becas y ayudas al estudio del Estado y comunidades autónomas (búsqueda por título "becas")
+    - Datasets universitarios, de FP y de enseñanzas artísticas publicados en datos.gob.es,
+      con URLs reales de descarga (CSV, JSON, XLS)
+  not_accessible:
+    - Expedientes académicos individuales del alumnado (protegidos)
+    - Calificaciones personales o actas internas de centros
+    - Trámites autenticados con certificado digital o Cl@ve (solicitud de becas, matrícula real)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

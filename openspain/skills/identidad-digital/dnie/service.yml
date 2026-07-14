@@ -1,0 +1,60 @@
+name: dnie
+display_name: DNI Electrónico (DNIe) — Guía Completa
+description: >
+  Guía completa del DNI electrónico español: qué es el chip y sus
+  certificados, cómo activar el PIN, lectores de tarjetas compatibles,
+  software y módulos criptográficos necesarios, uso para identificación
+  online y firma digital, renovación del DNI y de los certificados del
+  chip, limitaciones prácticas, uso por NFC con smartphone (DNIe 3.0) y
+  comparativa con el certificado digital FNMT y Cl@ve.
+organization: Dirección General de la Policía (DGP) — Ministerio del Interior
+tags: [identidad digital, DNI electrónico, DNIe, chip DNI, lector de tarjetas, firma digital, identificación electrónica, smartcard, NFC]
+
+links:
+  website: https://www.dnielectronico.es
+  cita_previa: https://www.citapreviadnie.es
+  valide: https://valide.redsara.es
+
+license:
+  data: Información pública de la DGP
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill puramente informativa y de orientación. No accede a los
+    certificados del DNIe ni a datos personales. Proporciona guía completa
+    sobre el DNI electrónico, su chip, lectores, software, uso y
+    limitaciones. Redirige a las skills identidad-digital-certificado-digital,
+    identidad-digital-clave e identidad-digital-autofirma como alternativas
+    y complementos.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué es el DNI electrónico y qué certificados contiene el chip
+    - Cómo activar y cambiar el PIN en comisaría
+    - Lectores de tarjetas compatibles y precios orientativos
+    - Software y módulos criptográficos necesarios por sistema operativo
+    - Uso del DNIe para identificación en sedes electrónicas
+    - Uso del DNIe para firma electrónica (con AutoFirma)
+    - Generaciones del DNIe (1.0 vs 3.0 con NFC)
+    - Renovación del DNI y de los certificados del chip
+    - Limitaciones prácticas y alternativas recomendadas
+    - Comparativa con certificado FNMT y Cl@ve
+  not_accessible:
+    - Lectura real de los certificados del chip (requiere lector + PIN)
+    - Datos personales del titular
+    - Información sobre el certificado FNMT (usar skill certificado-digital)
+    - Información sobre Cl@ve (usar skill clave)
+    - Firma de documentos (usar skill autofirma)
+    - Gestión de trámites con la Administración
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

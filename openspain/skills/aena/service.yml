@@ -1,0 +1,75 @@
+name: aena
+display_name: Aena — Estadísticas Aeroportuarias
+description: >
+  Estadísticas de tráfico aéreo de los aeropuertos españoles gestionados por Aena:
+  pasajeros, operaciones y carga por aeropuerto, mes y año. Datos disponibles
+  desde 2004 hasta la actualidad en informes mensuales y anuales descargables
+  en formato XLS.
+organization: Aena S.M.E., S.A.
+
+tags: [aeropuertos, aviación, pasajeros, operaciones, carga aérea]
+
+links:
+  website: https://www.aena.es
+  stats: https://www.aena.es/es/estadisticas/inicio.html
+  monthly: https://www.aena.es/es/estadisticas/informes-mensuales.html
+  annual: https://www.aena.es/es/estadisticas/informes-anuales.html
+  terms: https://www.aena.es/es/corporativa/informacion-corporativa/condiciones-legales.html
+
+license:
+  data: Reutilización de información pública (Aena S.M.E., S.A.)
+  code: MIT
+
+api:
+  type: xlsx-download
+  base_url: https://www.aena.es/sites/Satellite
+  auth:
+    required: false
+  notes: >
+    No existe API REST pública. Los datos se publican como ficheros XLS
+    descargables desde el portal estadístico de Aena. Cada informe (mensual
+    o anual) tiene una URL estable con el parámetro blobwhere único.
+    Las consultas personalizadas requieren registro.
+  download_pattern: >
+    https://www.aena.es/sites/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere={BLOB_ID}&ssbinary=true
+
+data:
+  scope:
+    national: true
+    temporal_coverage: "desde 2004 hasta la actualidad (mensual y anual)"
+  accessible:
+    - Pasajeros por aeropuerto y periodo (mensual/anual)
+    - Operaciones (aterrizajes + despegues) por aeropuerto y periodo
+    - Mercancías (carga aérea) por aeropuerto y periodo
+    - Informes anuales consolidados (XLS + PDF)
+    - Informes mensuales por año (XLS + PDF)
+  not_accessible:
+    - Consultas personalizadas por compañía/destino sin registro
+    - Datos en tiempo real u operativos (slots, delays)
+    - Series anteriores a 2004 vía descarga directa
+    - Datos de aeropuertos no gestionados por Aena
+
+known_files:
+  annual:
+    - year: 2025
+      xls_blob: "1576873058143"
+      url: "https://www.aena.es/sites/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1576873058143&ssbinary=true"
+    - year: 2024
+      xls_blob: "1576871820226"
+      url: "https://www.aena.es/sites/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1576871820226&ssbinary=true"
+    - year: 2023
+      xls_blob: "1576869794642"
+      url: "https://www.aena.es/sites/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1576869794642&ssbinary=true"
+  monthly_2026:
+    - month: "2026-02"
+      xls_blob: "1576873491064"
+      url: "https://www.aena.es/sites/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1576873491064&ssbinary=true"
+    - month: "2026-01"
+      xls_blob: "1576873282373"
+      url: "https://www.aena.es/sites/Satellite?blobcol=urldata&blobkey=id&blobtable=MungoBlobs&blobwhere=1576873282373&ssbinary=true"
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

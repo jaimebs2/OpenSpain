@@ -1,0 +1,61 @@
+name: certificado-digital
+display_name: Certificado Digital FNMT — Guía Completa
+description: >
+  Guía completa del certificado digital de persona física emitido por la
+  FNMT-RCM: solicitud paso a paso, acreditación de identidad, descarga e
+  instalación en diferentes navegadores y sistemas operativos, exportación
+  e importación (.pfx/.p12), renovación, revocación, usos en la
+  Administración Pública, problemas frecuentes y comparativa con Cl@ve y
+  DNI electrónico.
+organization: Fábrica Nacional de Moneda y Timbre (FNMT-RCM)
+tags: [identidad digital, certificado digital, FNMT, certificado electrónico, firma electrónica, identificación, administración electrónica, trámites online]
+
+links:
+  website: https://www.sede.fnmt.gob.es/certificados/persona-fisica
+  solicitud: https://www.sede.fnmt.gob.es/certificados/persona-fisica/obtener-certificado-software
+  renovacion: https://www.sede.fnmt.gob.es/certificados/persona-fisica/renovar
+  revocacion: https://www.sede.fnmt.gob.es/certificados/persona-fisica/anular
+  valide: https://valide.redsara.es
+  clave: https://clave.gob.es
+
+license:
+  data: Información pública de la FNMT-RCM
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill puramente informativa y de orientación. No accede a APIs ni
+    gestiona certificados. Proporciona el proceso completo de obtención,
+    instalación, renovación y uso del certificado digital FNMT, además de
+    resolución de problemas frecuentes. Redirige a las skills
+    identidad-digital-clave, identidad-digital-dnie e
+    identidad-digital-autofirma para otros medios de identificación y firma.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Proceso completo de solicitud del certificado de persona física
+    - Métodos de acreditación de identidad (presencial, DNIe, videollamada)
+    - Instalación en diferentes navegadores y sistemas operativos
+    - Exportación e importación de copia de seguridad (.pfx/.p12)
+    - Renovación y revocación del certificado
+    - Usos del certificado en la Administración Pública
+    - Problemas frecuentes y soluciones
+    - Comparativa con Cl@ve y DNI electrónico
+  not_accessible:
+    - Gestión real del certificado (requiere acceso a la sede FNMT)
+    - Datos personales del titular del certificado
+    - Estado de validez de un certificado concreto (usar VALIDe)
+    - Información sobre Cl@ve (usar skill clave)
+    - Información sobre DNI electrónico (usar skill dnie)
+    - Firma de documentos (usar skill autofirma)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

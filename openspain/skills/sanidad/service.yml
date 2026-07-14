@@ -1,0 +1,51 @@
+name: sanidad
+display_name: Ministerio de Sanidad
+description: >
+  Descubre y descarga datasets sanitarios publicados por el Ministerio de
+  Sanidad y otras administraciones españolas a través del catálogo nacional
+  datos.gob.es: catálogo nacional de hospitales, mortalidad por causa y
+  comunidad autónoma, y centros de atención primaria del Sistema Nacional
+  de Salud.
+organization: Ministerio de Sanidad
+tags: [sanidad, salud, hospitales, atención primaria, mortalidad, SNS, Sistema Nacional de Salud]
+
+links:
+  website: https://www.sanidad.gob.es
+  docs: https://datos.gob.es/es/apidata
+  terms: https://datos.gob.es/es/aviso-legal
+
+license:
+  data: Ley 37/2007 de reutilización de la información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    catalogo: https://datos.gob.es/apidata/catalog/dataset
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Catálogo Nacional de Hospitales del SNS (búsqueda por título "hospitales")
+    - Tasas de mortalidad por causa, sexo y grupo de edad (búsqueda por título "mortalidad")
+    - Centros y zonas básicas de atención primaria (búsqueda por título "atención primaria")
+    - Datasets sanitarios publicados por el Ministerio de Sanidad y CCAA en
+      datos.gob.es, con URLs reales de descarga (CSV, JSON, XLS)
+  not_accessible:
+    - Historias clínicas o datos individuales de pacientes (protegidos)
+    - Consultas en tiempo real a sistemas asistenciales del SNS
+    - Citas médicas o trámites autenticados con certificado digital o Cl@ve
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

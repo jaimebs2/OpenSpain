@@ -1,0 +1,56 @@
+name: catastro
+display_name: Dirección General del Catastro
+description: >
+  Consulta el Catastro español: búsqueda de inmuebles por referencia catastral,
+  resolución de direcciones, cartografía de parcelas y conversión entre
+  coordenadas y referencias catastrales.
+organization: Ministerio de Hacienda y Función Pública
+tags: [inmuebles, catastro, geolocalización, direcciones, parcelas]
+
+links:
+  website: https://www.sedecatastro.gob.es
+  docs: https://www.catastro.meh.es/esp/wfs.asp
+  terms: https://www.sedecatastro.gob.es/Accesos/SECAviso.aspx
+
+license:
+  data: Ley 37/2007 de reutilización del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    callejero: https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejero.svc
+    codigos: https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCallejeroCodigos.svc
+    coordenadas: https://ovc.catastro.meh.es/OVCServWeb/OVCWcfCallejero/COVCCoordenadas.svc
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado; aplicar
+      throttle interno si se hacen búsquedas masivas.
+  stability: stable
+
+data:
+  scope:
+    national: true
+    excludes: [País Vasco, Navarra]
+  accessible:
+    - Consulta de inmuebles por referencia catastral
+    - Búsqueda por dirección (provincia/municipio/calle/número)
+    - Coordenadas ↔ referencia catastral
+    - Cartografía de parcelas vía INSPIRE
+  not_accessible:
+    - Titularidad de los inmuebles (dato protegido)
+    - Valor catastral (dato protegido)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false
+  mcp:
+    available: true
+    path: mcp/
+    requires_install: true
+    runtime: python>=3.12

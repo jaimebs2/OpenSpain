@@ -1,0 +1,49 @@
+name: aeat
+display_name: Agencia Estatal de Administración Tributaria
+description: >
+  Descubre y descarga datasets fiscales publicados por la Agencia Tributaria
+  española y otras administraciones a través del catálogo nacional
+  datos.gob.es: estadísticas de IRPF, recaudación tributaria e IVA.
+organization: Ministerio de Hacienda y Función Pública
+tags: [fiscalidad, impuestos, IRPF, IVA, recaudación, estadísticas tributarias, AEAT]
+
+links:
+  website: https://sede.agenciatributaria.gob.es
+  docs: https://datos.gob.es/es/apidata
+  terms: https://datos.gob.es/es/aviso-legal
+
+license:
+  data: Ley 37/2007 de reutilización de la información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    catalogo: https://datos.gob.es/apidata/catalog/dataset
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Estadísticas del IRPF por tramo de renta (búsqueda por título "IRPF")
+    - Recaudación tributaria del Estado (búsqueda por título "recaudación")
+    - Estadísticas del Impuesto sobre el Valor Añadido (búsqueda por título "IVA")
+    - Datasets fiscales publicados por la AEAT y otras administraciones en
+      datos.gob.es, con URLs reales de descarga (CSV, JSON, XLS)
+  not_accessible:
+    - Datos fiscales individuales de contribuyentes (protegidos)
+    - Consultas en tiempo real a la Sede Electrónica de la AEAT
+    - Trámites autenticados con certificado digital o Cl@ve
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

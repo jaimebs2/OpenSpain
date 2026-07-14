@@ -1,0 +1,25 @@
+name: "\U0001F4A1 Feature request"
+description: Proponer una mejora o funcionalidad nueva
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción
+      description: Qué quieres que se añada o mejore
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivación
+      description: Por qué sería útil esta mejora
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternativas consideradas
+      description: Otras formas de resolver el mismo problema
+    validations:
+      required: false

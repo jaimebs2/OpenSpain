@@ -1,0 +1,53 @@
+name: fiscalidad-modelo-036
+display_name: Fiscalidad — Modelo 036 (Declaración Censal)
+description: >
+  Guía de referencia sobre la declaración censal de la AEAT (Modelo 036 y
+  su versión simplificada 037): altas, modificaciones y bajas del censo
+  de empresarios, profesionales y retenedores. Detalle por páginas y
+  casillas clave (111 alta, 120 modificación, 122 domicilio, 130 ROI,
+  150 baja, 510–530 régimen IVA, 582/584 alta ROI, 600–614 régimen IRPF).
+  Navegación paso a paso por la Sede Electrónica. Aplica a autónomos
+  personas físicas y a sociedades.
+organization: Agencia Estatal de Administración Tributaria (AEAT)
+tags: [fiscalidad, censo, modelo 036, modelo 037, declaración censal, ROI, autónomos, sociedades, AEAT]
+
+links:
+  website: https://sede.agenciatributaria.gob.es/Sede/procedimientoini/G322.shtml
+  censos: https://sede.agenciatributaria.gob.es/Sede/censos-nif-domicilio-fiscal.html
+  sede: https://sede.agenciatributaria.gob.es
+  vies: https://ec.europa.eu/taxation_customs/vies/
+
+license:
+  data: Información pública de la AEAT
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación. No presenta declaraciones ni
+    accede a sistemas internos de la AEAT. Puede usar WebFetch para
+    enlazar o consultar páginas informativas oficiales.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Cuándo usar el Modelo 036 y cuándo el 037
+    - Estructura del modelo por páginas
+    - Casillas clave por supuesto (alta, modificación, baja, ROI, domicilio, régimen IVA/IRPF)
+    - Paso a paso por la Sede Electrónica de la AEAT
+    - Plazos de presentación y consecuencias de fuera de plazo
+    - Qué ocurre tras presentar (plazos de resolución, requerimientos, silencio positivo)
+  not_accessible:
+    - Presentación real del modelo (requiere certificado digital/Cl@ve en la Sede AEAT)
+    - Datos censales individuales del contribuyente
+    - Histórico de modificaciones censales
+    - Texto legal de la normativa censal (usar skill boe)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

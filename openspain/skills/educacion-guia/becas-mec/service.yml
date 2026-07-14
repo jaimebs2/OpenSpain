@@ -1,0 +1,59 @@
+name: becas-mec
+display_name: Becas MEC — Guía de Becas y Ayudas al Estudio
+description: >
+  Guía completa de las becas y ayudas al estudio convocadas por el Ministerio
+  de Educación (MEC) de España: tipos de becas (universidad, FP, bachillerato,
+  idiomas, necesidades educativas especiales), requisitos académicos y
+  económicos (umbrales de renta y patrimonio), componentes de la beca
+  (matrícula, cuantía fija, variable, residencia), calendario (convocatoria,
+  solicitud, resolución provisional, alegaciones, resolución definitiva),
+  cómo solicitarlas (sede electrónica, Cl@ve), becas de colaboración y otros
+  programas.
+organization: Ministerio de Educación, Formación Profesional y Deportes (MEC)
+tags: [educación, becas, ayudas, MEC, universidad, FP, bachillerato, matrícula, requisitos, renta, solicitud, convocatoria]
+
+links:
+  website: https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/catalogo/estudiantes/becas-ayudas.html
+  sede_electronica: https://sede.educacion.gob.es
+  clave: https://clave.gob.es
+
+license:
+  data: Información pública del Ministerio de Educación
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación. No accede a APIs de datos ni a la
+    sede electrónica para trámites. Proporciona información sobre tipos de
+    becas, requisitos, calendario y proceso de solicitud. Redirige a skills
+    específicas (educacion, selectividad, fp, boe) para consultas
+    relacionadas.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Tipos de becas MEC (generales, NEAE, colaboración, idiomas)
+    - Requisitos académicos por nivel educativo
+    - Requisitos económicos (umbrales de renta y patrimonio)
+    - Componentes de la beca y cuantías orientativas
+    - Calendario del proceso (convocatoria a resolución)
+    - Proceso de solicitud paso a paso
+    - Resolución, alegaciones y recursos
+    - Preguntas frecuentes sobre compatibilidades y casuística
+    - Enlaces oficiales
+  not_accessible:
+    - Estado de una solicitud individual (requiere acceso a la sede con Cl@ve)
+    - Cuantías exactas del curso actual (varían por convocatoria)
+    - Datos estadísticos de educación (usar skill educacion)
+    - Texto legal de la convocatoria (usar skill boe)
+    - Subvenciones no educativas (usar skill infosubvenciones)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

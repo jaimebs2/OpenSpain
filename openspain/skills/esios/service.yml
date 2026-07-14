@@ -1,0 +1,54 @@
+name: esios
+display_name: ESIOS — Sistema Eléctrico Español
+description: >
+  Datos del sistema eléctrico español en tiempo real e históricos: precio PVPC hora a hora,
+  demanda, generación por tecnología (eólica, solar, hidro, nuclear), balance e intercambios.
+  Requiere token de la API ESIOS (gratuito, solicitar en esios.ree.es).
+organization: Red Eléctrica de España (REE)
+tags: [electricidad, energía, PVPC, renovables, demanda eléctrica]
+
+links:
+  website: https://www.esios.ree.es
+  docs: https://api.esios.ree.es
+  terms: https://www.esios.ree.es/es/terminos-condiciones
+
+license:
+  data: REE — condiciones de uso a verificar
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    api: https://api.esios.ree.es
+  auth:
+    required: true
+    type: token
+    env_var: ESIOS_TOKEN
+    notes: "Token gratuito — solicitar en https://www.esios.ree.es/es/área-privada/api-de-acceso"
+  rate_limit:
+    documented: false
+    notes: Sin límite publicado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+    temporal_coverage: "desde 2014 aproximadamente"
+  accessible:
+    - Precio PVPC hora a hora (indicador 1001)
+    - Precio energía excedentaria autoconsumo PVPC (indicador 1739)
+    - Precio medio horario final suma de componentes (indicador 10211, público)
+    - Precio mercado SPOT Diario (indicador 600, público)
+    - Previsión diaria demanda eléctrica peninsular (indicador 460, público)
+    - Intercambios internacionales
+    - Mercados diario e intradiario
+  not_accessible:
+    - Datos en tiempo real sin latencia (hay algunos minutos de retraso)
+    - Demanda real y generación real por tecnología sin token (requieren ESIOS_TOKEN)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false
+    requires_env: [ESIOS_TOKEN]

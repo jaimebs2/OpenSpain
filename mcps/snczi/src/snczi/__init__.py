@@ -1,0 +1,1 @@
+"""SNCZI MCP package."""

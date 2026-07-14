@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Documentos internos (estrategia y operaciones — no se publican)
+NEXT_SERVICES.md
+BUSINESS_MODEL.md
+MILESTONES.md
+docs/operations/
+
+# Configuración local de asistentes
+.claude/
+
+# Secrets / API keys
+.env
+.env.*
+*.key
+
+# Node (skills CLI)
+node_modules/
+
+# Logs
+*.log

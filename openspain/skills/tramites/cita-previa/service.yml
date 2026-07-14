@@ -1,0 +1,54 @@
+name: cita-previa
+display_name: Cita Previa con la Administración
+description: >
+  Meta-skill informativa que recopila las URLs y consejos para pedir
+  cita previa con los principales organismos de la Administración
+  española: AEAT (Hacienda), Seguridad Social (INSS/TGSS), SEPE
+  (desempleo), DGT (tráfico), DNI/pasaporte, extranjería, Registro
+  Civil y otros. No automatiza la obtención de citas, solo informa
+  dónde y cómo pedirlas.
+organization: Múltiples organismos de la Administración General del Estado
+tags: [cita previa, AEAT, Seguridad Social, SEPE, DGT, DNI, pasaporte, extranjería, Registro Civil, administración]
+
+links:
+  cita_aeat: https://sede.agenciatributaria.gob.es/Sede/procedimientoini/GC07.shtml
+  cita_sepe: https://sede.sepe.gob.es/portalSede/procedimientos-y-servicios/personas/proteccion-por-desempleo/cita-previa.html
+  cita_dnie: https://www.citapreviadnie.es
+  cita_seg_social: https://sede.seg-social.gob.es/wps/portal/sede/sede/Ciudadanos/cita-previa
+  cita_dgt: https://sede.dgt.gob.es/es/otros-tramites/cita-previa/
+  cita_extranjeria: https://sede.administracionespublicas.gob.es/icpplus/
+
+license:
+  data: Información pública de múltiples organismos
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Meta-skill informativa que agrupa URLs de cita previa de distintos
+    organismos. No automatiza la obtención de citas ni accede a los
+    sistemas de reserva. Redirige a las skills específicas para detalle
+    sobre cada trámite.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - URLs de cita previa de AEAT, Seguridad Social, SEPE, DGT, DNI/pasaporte, extranjería
+    - Teléfonos de cita previa de cada organismo
+    - Consejos para conseguir cita (horarios, estrategias)
+    - Documentación habitual para DNI y pasaporte
+    - Identificación electrónica necesaria (Cl@ve, certificado digital)
+  not_accessible:
+    - Obtención real de citas (cada sistema requiere acceso directo)
+    - Disponibilidad de citas en tiempo real
+    - Detalle de cada trámite (usar la skill del organismo correspondiente)
+    - Trámites autonómicos o locales específicos
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

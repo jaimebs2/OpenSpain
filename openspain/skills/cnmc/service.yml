@@ -1,0 +1,46 @@
+name: cnmc
+display_name: CNMC — Catálogo de Datos Abiertos
+description: >
+  Datos regulatorios de la Comisión Nacional de Mercados y la Competencia: electricidad,
+  gas, telecomunicaciones, audiovisual, transporte ferroviario y postal. Portal CKAN con
+  datasets descargables en CSV/XLS/JSON.
+organization: Comisión Nacional de Mercados y la Competencia (CNMC)
+tags: [energía, telecomunicaciones, regulación, CKAN, competencia]
+
+links:
+  website: https://www.cnmc.es
+  docs: https://catalogodatos.cnmc.es
+  terms: https://www.cnmc.es/avisolegal
+
+license:
+  data: CC-BY-SA-4.0 / Reutilización de información del sector público (Ley 37/2007)
+  code: MIT
+
+api:
+  type: ckan
+  base_urls:
+    ckan: https://catalogodatos.cnmc.es
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: Sin límite publicado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Búsqueda de datasets por texto libre (package_search)
+    - Filtrado por sector/grupo (energía eléctrica, gas natural, telecomunicaciones, postal, transporte, petróleo, comercio electrónico)
+    - Detalle de dataset con metadatos completos (package_show)
+    - URLs de descarga de cada recurso (CSV, JSON, XML)
+  not_accessible:
+    - Datos en tiempo real (solo datasets estáticos periódicos)
+    - Datos anteriores a la creación del portal CKAN
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

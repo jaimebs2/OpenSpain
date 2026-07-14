@@ -1,0 +1,54 @@
+name: itv
+display_name: Inspección Técnica de Vehículos (ITV)
+description: >
+  Guía práctica sobre la ITV en España: periodicidad según tipo de
+  vehículo y antigüedad (turismos, motos, furgonetas, pesados),
+  documentación necesaria, qué se inspecciona, resultados posibles
+  (favorable, desfavorable, negativa), plazo para reinspección,
+  consecuencias de circular sin ITV, ITV para vehículos importados
+  y reformados, y cómo pedir cita.
+organization: Dirección General de Tráfico (DGT)
+tags: [vehículos, ITV, inspección técnica, periodicidad, DGT, seguridad vial, emisiones, ficha técnica]
+
+links:
+  website: https://www.dgt.es/es/seguridad-vial/centros-colaboradores/itvs/
+
+license:
+  data: Información pública de la DGT / Ministerio de Industria
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa sobre la ITV. No accede a sistemas de cita ni a
+    datos de estaciones. La gestión de estaciones de ITV corresponde a
+    las comunidades autónomas. Para carnet de conducir usar carnet-conducir;
+    para transferencias usar transferencia-vehiculos.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Periodicidad de la ITV según tipo de vehículo y antigüedad
+    - Documentación necesaria para la inspección
+    - Puntos que se inspeccionan (frenos, luces, emisiones, etc.)
+    - Significado de cada resultado (favorable, desfavorable, negativa)
+    - Plazo para reinspección tras resultado desfavorable (2 meses)
+    - Sanciones por circular sin ITV (multas, inmovilización)
+    - ITV para vehículos importados y reformados
+    - Coste orientativo de la inspección
+  not_accessible:
+    - Sistemas de cita de las estaciones (gestionados por CCAA)
+    - Precios exactos por comunidad autónoma
+    - Resultado de una inspección concreta
+    - Datos del vehículo individual
+    - Permisos de conducir (usar skill carnet-conducir)
+    - Transferencias de vehículos (usar skill transferencia-vehiculos)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

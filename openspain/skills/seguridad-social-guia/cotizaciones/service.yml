@@ -1,0 +1,59 @@
+name: cotizaciones
+display_name: Cotizaciones a la Seguridad Social
+description: >
+  Guía completa sobre las cotizaciones al sistema de Seguridad Social español:
+  bases de cotización (mínima y máxima por grupo), tipos de cotización
+  (contingencias comunes, desempleo, FP, FOGASA, MEI, AT/EP), reparto entre
+  empresa y trabajador, cotización de autónomos por ingresos reales (tramos
+  y cuotas), tarifa plana, convenio especial, cotización durante el desempleo,
+  pluriactividad y pluriempleo.
+organization: Tesorería General de la Seguridad Social (TGSS)
+tags: [seguridad social, cotizaciones, bases, tipos, cuota autónomos, tarifa plana, contingencias comunes, RETA, TGSS, MEI]
+
+links:
+  website: https://sede.seg-social.gob.es
+  importass: https://importass.seg-social.es
+
+license:
+  data: Información pública de la Seguridad Social
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación. No accede a APIs de datos ni
+    realiza trámites. Proporciona una guía completa sobre el sistema de
+    cotización y redirige a skills específicas (jubilacion, laboral-nominas,
+    fiscalidad-autonomos, seguridad-social) para detalle complementario.
+    Los tipos y bases se actualizan anualmente por Orden ministerial.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué son las cotizaciones y quién las paga
+    - Bases de cotización del Régimen General (mínimas y máximas por grupo)
+    - Tipos de cotización (contingencias comunes, desempleo, FP, FOGASA, MEI, AT/EP)
+    - Reparto empresa/trabajador con ejemplo numérico
+    - Coste laboral total para la empresa
+    - Cotización de autónomos por ingresos reales (tramos y cuotas)
+    - Tarifa plana para nuevos autónomos
+    - Convenio especial (coste y cuándo se usa)
+    - Cotización durante el desempleo
+    - Pluriactividad y pluriempleo
+    - Grupos de cotización y categorías profesionales
+  not_accessible:
+    - Bases de cotización individuales del usuario (requiere Import@ss)
+    - Cálculo personalizado de cuotas (usar Import@ss o asesor)
+    - Detalle de cómo se refleja en la nómina (usar skill laboral-nominas)
+    - Pensión de jubilación (usar skill jubilacion)
+    - Obligaciones fiscales del autónomo (usar skill fiscalidad-autonomos)
+    - Datos estadísticos agregados (usar skill seguridad-social)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

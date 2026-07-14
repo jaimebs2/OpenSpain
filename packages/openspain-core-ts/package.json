@@ -1,0 +1,28 @@
+{
+  "name": "@jaimebs2/OpenSpain-core",
+  "version": "0.0.0",
+  "description": "Tipos compartidos, validadores y mapeo de errores para los MCPs de OpenSpain",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"TODO: tests llegan en M1\" && exit 0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaimebs2/OpenSpain.git",
+    "directory": "packages/openspain-core-ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

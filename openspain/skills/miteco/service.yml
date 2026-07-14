@@ -1,0 +1,53 @@
+name: miteco
+display_name: Ministerio para la Transición Ecológica y el Reto Demográfico
+description: >
+  Descubre y descarga datasets ambientales publicados por MITECO y otras
+  administraciones españolas a través del catálogo nacional datos.gob.es:
+  estado de embalses, calidad del aire, Red Natura 2000 y espacios
+  protegidos, biodiversidad y otros datos de medio ambiente.
+organization: Ministerio para la Transición Ecológica y el Reto Demográfico
+tags: [medio ambiente, embalses, calidad aire, biodiversidad, red natura, MITECO, agua, clima]
+
+links:
+  website: https://www.miteco.gob.es
+  docs: https://datos.gob.es/es/apidata
+  terms: https://datos.gob.es/es/aviso-legal
+
+license:
+  data: Ley 37/2007 de reutilización de la información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    catalogo: https://datos.gob.es/apidata/catalog/dataset
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Estado de embalses y reservas hidráulicas (búsqueda por título "embalses")
+    - Calidad del aire y estaciones de medida (búsqueda por título "calidad aire")
+    - Red Natura 2000, ZEPA, ZEC y LIC (búsqueda por título "red natura")
+    - Biodiversidad, especies protegidas y espacios naturales
+    - Datasets ambientales publicados por MITECO, confederaciones hidrográficas
+      y otras administraciones en datos.gob.es, con URLs reales de descarga
+      (CSV, JSON, XLS, SHP)
+  not_accessible:
+    - Datos en tiempo real del SAIH (Sistema Automático de Información Hidrológica)
+      vía API propia de MITECO
+    - Servicios WMS/WFS geoespaciales (requieren cliente GIS)
+    - Trámites autenticados con la sede electrónica del ministerio
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

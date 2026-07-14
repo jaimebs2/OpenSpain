@@ -1,0 +1,67 @@
+name: dgt-zbe
+display_name: DGT — Zonas de Bajas Emisiones (ZBE)
+description: >
+  Delimitación geográfica (DATEX2 XML) de las Zonas de Bajas Emisiones en
+  ciudades españolas: perímetro, restricciones de acceso por etiqueta
+  medioambiental DGT (0 emisiones, ECO, C, B), horarios y excepciones.
+organization: Dirección General de Tráfico (DGT)
+tags: [DGT, ZBE, zonas bajas emisiones, etiqueta medioambiental, movilidad, DATEX2, NAP]
+
+links:
+  website: https://nap.dgt.es/dataset/zonas-de-bajas-emisiones
+  docs: https://nap.dgt.es/dataset/zonas-de-bajas-emisiones
+  data_directory: https://infocar.dgt.es/datex2/v3/dgt/zbe/
+  terms: https://nap.dgt.es/es/faq
+
+license:
+  data: Real Decreto 1495/2011, reutilización de información del sector público
+  code: MIT
+
+api:
+  type: rest-xml
+  format: DATEX2 v3 (ControledZonePublication)
+  base_url: https://infocar.dgt.es/datex2/v3/dgt/zbe/ControledZonePublication/
+  url_pattern: "https://infocar.dgt.es/datex2/v3/dgt/zbe/ControledZonePublication/{Ciudad}.xml"
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Ficheros estáticos actualizados periódicamente.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  format: DATEX2 XML v3 (ControledZonePublication)
+  note: >
+    Los datos no están en GeoJSON sino en DATEX2 XML v3, estándar europeo para
+    datos de tráfico. Cada municipio tiene su propio fichero XML.
+  accessible:
+    - Perímetro geográfico de cada ZBE (polígono o multipolígono)
+    - Tipo de restricción y etiquetas medioambientales permitidas (0, ECO, C, B)
+    - Horarios de vigencia de las restricciones
+    - Excepciones (residentes, carga/descarga, emergencias, etc.)
+    - Nombre oficial y código de la ZBE
+  not_accessible:
+    - Consulta de vehículo concreto por matrícula (requiere sede electrónica DGT)
+    - Datos históricos de restricciones anteriores
+
+cities_available:
+  - Madrid
+  - Barcelona (ZBEBarcelona, RondasDeBarcelona)
+  - Castellon
+  - Sabadell
+  - Malaga
+  - ACoruna
+  - Oviedo
+  - SantJoanDespi
+  - Tarragona
+  - Viladecans
+  - note: "Ver directorio completo en https://infocar.dgt.es/datex2/v3/dgt/zbe/"
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

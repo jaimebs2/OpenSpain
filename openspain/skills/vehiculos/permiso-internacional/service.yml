@@ -1,0 +1,54 @@
+name: permiso-internacional
+display_name: Permiso Internacional de Conducción
+description: >
+  Guía sobre el Permiso Internacional de Conducción (PIC) expedido en
+  España: qué es, cuándo es necesario, países que lo exigen, Convenios
+  de Viena y Ginebra, cómo solicitarlo (presencial en Jefatura de Tráfico
+  con cita previa), documentación necesaria (DNI, permiso español, foto,
+  tasa), validez (1 año), conducir en el extranjero (alquiler, seguro,
+  normativa local).
+organization: Dirección General de Tráfico (DGT)
+tags: [vehículos, permiso internacional, conducir extranjero, DGT, Convenio Viena, Convenio Ginebra, PIC, carnet internacional]
+
+links:
+  website: https://sede.dgt.gob.es/es/permisos-de-conducir/permiso-internacional/
+  cita_previa: https://sede.dgt.gob.es/es/cita-previa/
+
+license:
+  data: Información pública de la DGT
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa sobre el Permiso Internacional de Conducción.
+    No accede a APIs de datos ni tramita solicitudes. Se expide
+    exclusivamente de forma presencial en Jefaturas de Tráfico.
+    Para permisos de conducir españoles usar carnet-conducir.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Qué es el Permiso Internacional de Conducción y para qué sirve
+    - Cuándo es necesario y cuándo no (UE/EEE vs resto del mundo)
+    - Convenios de Viena (1968) y Ginebra (1949)
+    - Requisitos y documentación para solicitarlo
+    - Dónde solicitarlo (Jefatura Provincial de Tráfico, cita previa)
+    - Validez (1 año) y renovación
+    - Coste (tasa DGT)
+    - Consejos prácticos para conducir en el extranjero
+  not_accessible:
+    - Tramitación online del PIC (no existe, solo presencial)
+    - Normativa interna de cada país de destino en detalle
+    - Permisos de conducir españoles (usar skill carnet-conducir)
+    - ITV (usar skill itv)
+    - Transferencias de vehículos (usar skill transferencia-vehiculos)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

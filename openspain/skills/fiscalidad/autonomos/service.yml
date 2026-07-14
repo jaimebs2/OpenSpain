@@ -1,0 +1,60 @@
+name: fiscalidad-autonomos
+display_name: Fiscalidad — Guía General para Autónomos
+description: >
+  Guía completa de las obligaciones fiscales de un trabajador autónomo
+  (persona física) en España: alta censal (036/037), impuestos que paga
+  (IVA, IRPF), calendario fiscal trimestral y anual, facturación,
+  declaración de la Renta, libros obligatorios, accesos digitales (Cl@ve,
+  certificado digital) y cuánto reservar para impuestos.
+organization: Agencia Estatal de Administración Tributaria (AEAT)
+tags: [fiscalidad, autónomos, obligaciones fiscales, calendario fiscal, facturación, alta autónomo, modelo 036, modelo 037, Renta, AEAT]
+
+links:
+  website: https://sede.agenciatributaria.gob.es/Sede/todas-gestiones.html
+  alta_censal: https://sede.agenciatributaria.gob.es/Sede/procedimientoini/G322.shtml
+  renta: https://sede.agenciatributaria.gob.es/Sede/irpf.html
+  calendario: https://sede.agenciatributaria.gob.es/Sede/ayuda/calendario-contribuyente/calendario-contribuyente-2026.html
+  clave: https://clave.gob.es
+  certificado_fnmt: https://www.sede.fnmt.gob.es/certificados/persona-fisica
+
+license:
+  data: Información pública de la AEAT
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación general. No accede a APIs de datos
+    ni a la Sede Electrónica para trámites. Proporciona el mapa completo
+    de obligaciones fiscales del autónomo y redirige a las skills
+    específicas (fiscalidad-iva, fiscalidad-irpf-autonomos, seguridad-social)
+    para detalle de cada impuesto.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Proceso de alta censal como autónomo (Modelos 036/037)
+    - Impuestos que paga un autónomo (IVA, IRPF) y modelos trimestrales
+    - Calendario fiscal completo (trimestral y anual)
+    - Requisitos de facturación y datos obligatorios de una factura
+    - Orientación sobre cuánto reservar para impuestos
+    - Declaración de la Renta anual (Modelo 100) para autónomos
+    - Libros y registros contables obligatorios
+    - Accesos digitales (Cl@ve, certificado FNMT, DNIe)
+    - URLs de trámites habituales en la Sede Electrónica
+  not_accessible:
+    - Presentación real de declaraciones (requiere certificado digital/Cl@ve)
+    - Datos fiscales individuales del contribuyente
+    - Detalle de cálculo del IVA (usar skill fiscalidad-iva)
+    - Detalle de cálculo del IRPF (usar skill fiscalidad-irpf-autonomos)
+    - Cuotas de la Seguridad Social (usar skill seguridad-social)
+    - Obligaciones de sociedades (SL, SA)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

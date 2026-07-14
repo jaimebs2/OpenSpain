@@ -1,0 +1,61 @@
+name: aemet
+display_name: Agencia Estatal de Meteorología
+description: >
+  Consulta AEMET OpenData: predicción meteorológica diaria por municipio,
+  observación de estaciones convencionales (temperatura, precipitación,
+  viento, humedad) y avisos meteorológicos CAP vigentes a nivel nacional.
+organization: Ministerio para la Transición Ecológica y el Reto Demográfico
+tags: [meteorología, tiempo, clima, predicción, alertas, observación]
+
+links:
+  website: https://www.aemet.es
+  docs: https://opendata.aemet.es/centrodedescargas/inicio
+  terms: https://opendata.aemet.es/centrodedescargas/aemet_aviso_legal
+  api_key_request: https://opendata.aemet.es/centrodedescargas/altaUsuario
+
+license:
+  data: Creative Commons Reconocimiento 4.0 (AEMET OpenData)
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    opendata: https://opendata.aemet.es/opendata
+  auth:
+    required: true
+    env_var: AEMET_API_KEY
+    notes: >
+      API key gratuita. Se envía en el header `api_key` o como query
+      parameter `?api_key=...`. Leer siempre de la variable de entorno
+      AEMET_API_KEY, nunca pedirla al usuario en tiempo de ejecución.
+  pattern:
+    double_hop: true
+    notes: >
+      La primera llamada devuelve un objeto con campos `datos` y `metadatos`
+      que son URLs temporales (caducan en ~5 minutos). Hay que hacer una
+      segunda llamada a la URL de `datos` para obtener la respuesta real.
+  rate_limit:
+    documented: true
+    notes: >
+      AEMET aplica throttling. Ante respuesta 429 esperar y reintentar
+      una vez. Se recomienda no encadenar peticiones en ráfaga.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Predicción diaria por municipio (hasta 7 días, código INE de 5 dígitos)
+    - Observación convencional de estaciones (última hora, datos horarios)
+    - Avisos meteorológicos CAP en vigor (último elaborado)
+  not_accessible:
+    - Datos climatológicos históricos masivos (requieren petición específica)
+    - Radar e imágenes satelitales (endpoints distintos)
+    - Predicciones numéricas de modelos globales
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false
+    requires_env: [AEMET_API_KEY]

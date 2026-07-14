@@ -1,0 +1,57 @@
+name: dataestur
+display_name: DataEstur — Estadísticas de Turismo (SEGITTUR)
+description: >
+  Estadísticas oficiales de turismo de España gestionadas por SEGITTUR: turistas
+  extranjeros (FRONTUR), gasto turístico (EGATUR), alojamientos, transporte turístico,
+  actividades de ocio y sostenibilidad. La API descarga ficheros XLSX directamente,
+  filtrados por rango de fechas.
+organization: Secretaría de Estado de Turismo / SEGITTUR
+tags: [turismo, FRONTUR, EGATUR, turistas extranjeros, gasto turístico, alojamiento]
+
+links:
+  website: https://dataestur.es
+  docs: https://dataestur.azure-api.net/API-SEGITTUR-v1
+  terms: https://dataestur.es/politica-de-privacidad/
+
+license:
+  data: Reutilización de información del sector público
+  code: MIT
+
+api:
+  type: xlsx-download
+  base_urls:
+    api: https://dataestur.azure-api.net/API-SEGITTUR-v1
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite publicado. Los ficheros XLSX pueden tardar varios segundos
+      en generarse. Filtrar siempre por fechas para reducir el tamaño.
+  stability: stable
+  notes: >
+    Todos los endpoints devuelven ficheros XLSX (application/vnd.ms-excel),
+    no JSON. Los parámetros de fecha usan nombres con espacios y tildes:
+    "desde (año)", "desde (mes)", "hasta (año)", "hasta (mes)".
+    URL-encodear los paréntesis y el año con tilde (%C3%B1).
+
+data:
+  scope:
+    national: true
+    temporal_coverage: "variable por serie; FRONTUR desde ~1995, EGATUR desde ~1995"
+  accessible:
+    - FRONTUR — turistas y excursionistas extranjeros por país, CCAA y tipo
+    - EGATUR — gasto turístico por tipo de visitante, país y CCAA
+    - Actividades de ocio — entradas vendidas y gasto
+    - Alojamiento — ocupación hotelera, campings, turismo rural, apartamentos
+    - Transporte turístico
+    - Indicadores de sostenibilidad turística
+  not_accessible:
+    - Datos en tiempo real (datos históricos con meses de retraso)
+    - Datos en formato JSON o CSV directamente (solo XLSX)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

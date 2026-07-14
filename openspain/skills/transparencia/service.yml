@@ -1,0 +1,53 @@
+name: transparencia
+display_name: Portal de Transparencia
+description: >
+  Consulta datos de transparencia de la Administración General del Estado
+  español: contratación pública (Plataforma de Contratación del Sector Público,
+  PLACSP), subvenciones, nombramientos y retribuciones de altos cargos, y
+  agendas oficiales. La información se descubre a través del catálogo nacional
+  datos.gob.es, que indexa las publicaciones del Portal de Transparencia y del
+  resto de administraciones públicas.
+organization: Ministerio de Hacienda y Función Pública (Portal de Transparencia)
+tags: [transparencia, contratos, subvenciones, altos cargos, retribuciones, licitaciones, PLACSP]
+
+links:
+  website: https://transparencia.gob.es
+  docs: https://datos.gob.es/es/accessible-apidata
+  terms: https://datos.gob.es/es/aviso-legal
+
+license:
+  data: Ley 19/2013 de transparencia, acceso a la información pública y buen gobierno
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    catalogo: https://datos.gob.es/apidata/catalog/dataset
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado para datos.gob.es. Uso responsable
+      recomendado; aplicar throttle interno si se descargan muchos datasets.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Contratos del sector público (PLACSP, licitaciones, contratos mayores)
+    - Subvenciones y ayudas públicas publicadas por administraciones
+    - Nombramientos, ceses y retribuciones de altos cargos
+    - Agendas institucionales de miembros del Gobierno
+    - Registro de transparencia (solicitudes y reclamaciones)
+  not_accessible:
+    - Presentar solicitudes de acceso a la información pública (trámite online)
+    - Expedientes administrativos concretos no publicados
+    - Datos personales protegidos (identidades, retribuciones individuales no publicadas)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

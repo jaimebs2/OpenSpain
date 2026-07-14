@@ -1,0 +1,62 @@
+name: infosubvenciones
+display_name: BDNS — Base de Datos Nacional de Subvenciones
+description: >
+  Consulta la Base de Datos Nacional de Subvenciones (BDNS / SNPSAP):
+  convocatorias de subvenciones y ayudas públicas españolas, concesiones
+  por beneficiario, ayudas de Estado, ayudas de minimis, planes
+  estratégicos y grandes beneficiarios. Cobertura estatal, autonómica y
+  local.
+organization: Intervención General de la Administración del Estado (IGAE) — Ministerio de Hacienda
+tags: [subvenciones, ayudas, BDNS, transparencia, fondos públicos, convocatorias, concesiones]
+
+links:
+  website: https://www.infosubvenciones.es
+  portal: https://www.pap.hacienda.gob.es/bdnstrans/GE/es/
+  terms: https://www.infosubvenciones.es/bdnstrans/GE/es/avisolegal
+
+license:
+  data: Ley 37/2007 de reutilización de la información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    bdns: https://www.pap.hacienda.gob.es/bdnstrans/api
+    datos_gob: https://datos.gob.es/apidata/catalog/dataset
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. La IGAE se reserva el derecho a
+      restringir el acceso ante uso abusivo. Tamaño de página máximo
+      observado: 50. Usar paginación responsable.
+  stability: stable
+
+data:
+  scope:
+    national: true
+    includes:
+      - Administración General del Estado
+      - Comunidades autónomas
+      - Entidades locales (ayuntamientos, diputaciones, cabildos)
+      - Universidades y otros entes públicos
+  accessible:
+    - Convocatorias de subvenciones (búsqueda por descripción, organismo, fechas)
+    - Detalle completo de una convocatoria por número BDNS
+    - Concesiones individuales (búsqueda por beneficiario, NIF, fechas, importe)
+    - Ayudas de Estado (reglamentos UE de exención)
+    - Ayudas de minimis (con acumulado nacional agrícola y pesca)
+    - Grandes beneficiarios (>100.000€ acumulado por ejercicio)
+    - Planes estratégicos de subvenciones
+    - Últimas convocatorias y concesiones publicadas
+  not_accessible:
+    - Pagos efectivos a beneficiarios (la BDNS publica concesiones, no pagos)
+    - Documentación completa de los expedientes
+    - Datos personales de beneficiarios particulares (anonimizados con ***)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

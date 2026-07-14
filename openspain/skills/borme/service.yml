@@ -1,0 +1,51 @@
+name: borme
+display_name: Boletín Oficial del Registro Mercantil
+description: >
+  Consulta el BORME español: sumario diario por fecha con actos inscritos
+  de empresarios (constituciones, ceses, nombramientos, ampliaciones de
+  capital, disoluciones), otros actos publicados en el Registro Mercantil
+  y anuncios y avisos legales, todo organizado por provincia.
+organization: Agencia Estatal Boletín Oficial del Estado
+tags: [empresas, registro mercantil, sociedades, mercantil, boletín oficial]
+
+links:
+  website: https://www.boe.es/diario_borme/
+  docs: https://www.boe.es/datosabiertos/documentos/SumariosBOEInterfazEnJSONOpenData.pdf
+  terms: https://www.boe.es/datosabiertos/
+
+license:
+  data: Real Decreto 1495/2011, reutilización de información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    sumarios: https://www.boe.es/datosabiertos/api/borme
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Sumario diario del BORME por fecha (YYYYMMDD)
+    - Actos inscritos de empresarios por provincia (Sección A)
+    - Otros actos publicados en el Registro Mercantil (Sección B)
+    - Anuncios y avisos legales (Sección C)
+    - Enlaces a los PDF oficiales de cada anuncio
+  not_accessible:
+    - Texto plano de los actos inscritos (solo PDF)
+    - Búsqueda por nombre de empresa o NIF
+    - BORMEs anteriores a la digitalización
+    - Datos económicos o cuentas anuales depositadas
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

@@ -1,0 +1,52 @@
+name: cnig
+display_name: Centro Nacional de Información Geográfica (CNIG / IGN)
+description: >
+  Geocodificación y búsqueda de topónimos en España a través de CartoCiudad,
+  el servicio del Instituto Geográfico Nacional (IGN) y el CNIG: convierte
+  direcciones a coordenadas, coordenadas a direcciones y busca municipios,
+  poblaciones y calles por nombre.
+organization: Instituto Geográfico Nacional (IGN) — Centro Nacional de Información Geográfica (CNIG)
+tags: [cartografía, geocodificación, coordenadas, topónimos, direcciones, IGN, CNIG, CartoCiudad]
+
+links:
+  website: https://www.ign.es
+  cnig: https://www.cnig.es
+  cartociudad: https://www.cartociudad.es
+  docs: https://www.cartociudad.es/recursos/Documentacion_tecnica/CARTOCIUDAD_ServiciosWeb.pdf
+  terms: https://www.cartociudad.es/portal/web/guest/condiciones-de-uso
+
+license:
+  data: CC BY 4.0 ign.es
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    geocoder: https://www.cartociudad.es/geocoder/api/geocoder
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado; aplicar
+      throttle interno si se hacen búsquedas masivas.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Geocodificación directa de direcciones (calle, portal, municipio)
+    - Geocodificación inversa (lat/lon → dirección más cercana)
+    - Búsqueda de candidatos por nombre (municipios, poblaciones, calles, topónimos)
+    - Referencia catastral del portal geocodificado (cuando está disponible)
+  not_accessible:
+    - Cartografía raster (usar WMS/WMTS del IGN aparte)
+    - Datos de relieve, hidrografía o toponimia histórica completos (usar WFS NGBE)
+    - País Vasco y Navarra con cobertura reducida para algunos endpoints
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

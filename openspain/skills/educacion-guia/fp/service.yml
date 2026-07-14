@@ -1,0 +1,58 @@
+name: fp
+display_name: Formación Profesional (FP) — Guía Completa
+description: >
+  Guía completa de la Formación Profesional (FP) en España: niveles (FP Básica,
+  Grado Medio, Grado Superior, cursos de especialización), 26 familias
+  profesionales con cientos de títulos, requisitos de acceso a cada nivel,
+  modalidades (presencial, a distancia, FP dual), FCT (prácticas en empresas),
+  convalidaciones con la universidad, el portal TodoFP, FP para el empleo y
+  la nueva Ley Orgánica 3/2022 de ordenación de la FP.
+organization: Ministerio de Educación, Formación Profesional y Deportes (MEC)
+tags: [educación, formación profesional, FP, grado medio, grado superior, FP básica, FP dual, TodoFP, familias profesionales, ciclo formativo, técnico, acceso]
+
+links:
+  website: https://www.todofp.es
+  que_estudiar: https://www.todofp.es/que-estudiar.html
+  ministerio: https://www.educacionfpydeportes.gob.es
+
+license:
+  data: Información pública del Ministerio de Educación y TodoFP
+  code: MIT
+
+api:
+  type: knowledge
+  auth:
+    required: false
+  notes: >
+    Skill informativa y de orientación sobre la Formación Profesional en
+    España. No accede a APIs de datos ni gestiona matriculaciones.
+    Proporciona información sobre niveles, familias, acceso, modalidades y
+    convalidaciones. Redirige a skills específicas (educacion, becas-mec,
+    selectividad, laboral-contratos, boe) para consultas relacionadas.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Niveles de FP (Básica, Grado Medio, Grado Superior, especialización)
+    - 26 familias profesionales con ejemplos de títulos
+    - Requisitos de acceso a cada nivel
+    - Modalidades (presencial, a distancia, dual)
+    - Formación en Centros de Trabajo (FCT / prácticas)
+    - Convalidaciones con la universidad
+    - Información sobre TodoFP como portal de referencia
+    - FP para el empleo (formación continua)
+    - Nuevo marco de la Ley Orgánica 3/2022
+  not_accessible:
+    - Plazas disponibles en centros concretos (consultar TodoFP o CCAA)
+    - Matriculación o inscripción en ciclos formativos
+    - Datos estadísticos educativos (usar skill educacion)
+    - Información sobre becas de FP (usar skill becas-mec)
+    - Contratos formativos laborales (usar skill laboral-contratos)
+    - Texto legal de la Ley de FP (usar skill boe)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

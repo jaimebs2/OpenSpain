@@ -1,0 +1,47 @@
+name: boe
+display_name: Boletín Oficial del Estado
+description: >
+  Consulta el BOE español: sumario diario por fecha, búsqueda de
+  disposiciones por sección y departamento, e índice de leyes consolidadas
+  por identificador BOE.
+organization: Agencia Estatal Boletín Oficial del Estado
+tags: [legislación, normativa, disposiciones, leyes, boletín oficial]
+
+links:
+  website: https://www.boe.es
+  docs: https://www.boe.es/datosabiertos/documentos/SumariosBOEInterfazEnJSONOpenData.pdf
+  terms: https://www.boe.es/datosabiertos/
+
+license:
+  data: Real Decreto 1495/2011, reutilización de información del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    sumarios: https://www.boe.es/datosabiertos/api/boe
+    consolidada: https://www.boe.es/datosabiertos/api/legislacion-consolidada
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Sumario diario del BOE (secciones, departamentos, epígrafes, títulos)
+    - Índice de legislación consolidada por identificador BOE
+    - Texto completo de bloques de leyes consolidadas
+  not_accessible:
+    - BOEs anteriores a la digitalización
+    - BORME (Registro Mercantil)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

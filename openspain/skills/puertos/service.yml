@@ -1,0 +1,93 @@
+name: puertos
+display_name: Puertos del Estado — Oceanografía y Estadísticas Portuarias
+description: >
+  Datos oceanográficos en tiempo real (nivel del mar, oleaje, temperatura
+  superficial del mar) y predicciones numéricas costeras y portuarias de los
+  puertos de interés general del Estado español, servidos a través del servidor
+  THREDDS de Puertos del Estado (OPeNDAP). Incluye datos de la red de
+  mareógrafos (REDCOS), radar de corrientes y modelos de oleaje.
+organization: Puertos del Estado
+tags: [puertos, oceanografía, mareógrafos, oleaje, nivel del mar, boyas, THREDDS, OPeNDAP]
+
+links:
+  website: https://www.puertos.es
+  docs: http://opendap.puertos.es/thredds/catalog.html
+  thredds_catalog: http://opendap.puertos.es/thredds/catalog.xml
+  portus: https://portus.puertos.es
+  terms: https://www.puertos.es/es-es/Paginas/AvisoLegal.aspx
+
+license:
+  data: Uso público y gratuito con cita de la fuente (Puertos del Estado); uso comercial requiere contacto previo con el PI
+  code: MIT
+
+api:
+  type: thredds-opendap
+  base_urls:
+    thredds_catalog: http://opendap.puertos.es/thredds/catalog.xml
+    thredds_html: http://opendap.puertos.es/thredds/catalog.html
+    opendap_dods: http://opendap.puertos.es/thredds/dodsC/
+    file_server: http://opendap.puertos.es/thredds/fileServer/
+  auth:
+    required: false
+  notes: >
+    El servidor THREDDS organiza los datos en dos categorías: Medidas
+    (observaciones en tiempo real) y Modelos (predicciones numéricas).
+    Para obtener datos se navega el catálogo XML, se obtiene el urlPath
+    del dataset deseado y se accede mediante los endpoints dodsC (OPeNDAP),
+    fileServer (descarga NetCDF) o dodsC con sufijo .dds/.das para metadatos.
+  stability: stable
+
+data:
+  scope:
+    national: true
+    coastal: true
+  datasets:
+    tidegauge:
+      description: Mareógrafos — nivel del mar en tiempo real
+      catalog_path: tidegauge_<id>/
+      file_pattern: "MIR2Z_<Puerto>_<id>_<station_id>_<YYYYMMDD>.nc4"
+      file_hm_pattern: "MIR2Z_<Puerto>_<id>_<station_id>_<YYYYMMDD>_analysis_HM.nc4"
+      variables: [SLEV, SLEV_QC, TIME, LATITUDE, LONGITUDE, DEPH]
+      stations_example:
+        - id: tidegauge_bar2
+          name: Barcelona
+          coords: "41.3418°N, 2.1657°E"
+          portus_station: 3758
+        - id: tidegauge_alge
+          name: Algeciras
+          coords: "36.177°N, 5.398°W"
+    wave_models:
+      description: Modelos de oleaje (predicción numérica)
+      catalog_paths:
+        - wave_large_atlmed  # Atlántico-Mediterráneo gran escala
+        - wave_regional_gib  # Gibraltar regional
+        - wave_regional_bal  # Baleares regional
+        - wave_regional_can  # Canarias regional
+        - wave_regional_aib  # Atlántico-Ibérico regional
+        - wave_regional_ibi  # Iberia-Biscay-Ireland regional
+    radar_currents:
+      description: Corrientes superficiales por radar HF
+      catalog_paths:
+        - radar_local_deltaebro
+        - radar_local_gibraltar
+    satellite_sst:
+      description: Temperatura superficial del mar vía satélite (región IBI)
+      catalog_paths:
+        - sat_large_ibi
+  accessible:
+    - Nivel del mar en tiempo real (45+ estaciones mareográficas, España peninsular e islas)
+    - Predicciones de oleaje en múltiples escalas (gran escala, regional, costera, portuaria)
+    - Corrientes superficiales por radar HF (6 zonas)
+    - Temperatura superficial del mar (satélite, región IBI)
+    - Modelos atmosféricos costeros HARMONIE (2.5 km) y locales (1 km, 16 puertos)
+    - Modelos 3D oceánicos (temperatura, circulación, salinidad, nivel) a escala costera y portuaria
+  not_accessible:
+    - Estadísticas portuarias históricas (tráfico de mercancías, pasajeros) — no disponibles en THREDDS ni en datos.gob.es con publisher verificado
+    - Datos de boyas de oleaje REDEXT (no localizados en el catálogo THREDDS público)
+    - Modelos HARMONIE de 2.5 km con restrictAccess (requieren credenciales)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

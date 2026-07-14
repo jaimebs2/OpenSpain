@@ -1,0 +1,57 @@
+name: openspain
+display_name: "OpenSpain — Datos públicos de España para agentes de IA"
+description: >
+  Meta-skill que actúa como punto de entrada y directorio de todas las skills
+  de OpenSpain. Cubre 97 skills sobre fuentes de datos e información oficial del sector
+  público español: legislación, parlamento, estadística, fiscalidad, laboral,
+  justicia, extranjería, vivienda, construcción (CTE), vehículos, emprendimiento,
+  identidad digital, trámites ciudadanos, transporte, meteorología, energía,
+  sanidad, educación, territorio, cultura, elecciones, transparencia,
+  contratación pública y datos abiertos.
+organization: OpenSpain (jaimebs2)
+tags: [open-data, spain, gobierno, datos-públicos, meta-skill, directorio, APIs-públicas]
+
+links:
+  repository: https://github.com/jaimebs2/OpenSpain
+  skills_spec: https://agentskills.io
+  install_cli: https://vercel.com/docs/agent-resources/skills
+
+license:
+  data: Varies by source (see individual skills)
+  code: MIT
+
+api:
+  type: meta-skill
+  auth:
+    required: false
+  notes: >
+    Esta skill no accede a APIs directamente. Actúa como router hacia
+    las 97 skills individuales que sí acceden a las fuentes públicas.
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Legislación (BOE, BORME)
+    - "Fiscalidad ampliada: facturación, Modelo 036, operaciones intracomunitarias, ITP-AJD, sucesiones, no residentes"
+    - "Guías ciudadanas: laboral, justicia, extranjería, vivienda, vehículos, trámites, identidad digital, emprendimiento"
+    - Construcción y edificación (CTE)
+    - Parlamento (Congreso, Senado)
+    - Estadística y macroeconomía (INE, SEPE, Seguridad Social, BdE, AEAT, CIS)
+    - Fiscalidad (IVA, IRPF autónomos, obligaciones fiscales)
+    - Transporte (DGT tráfico/ZBE/accidentes, AENA, Puertos del Estado)
+    - Meteorología (AEMET)
+    - Territorio (Catastro, CNIG/IGN, MITECO)
+    - Energía (ESIOS/REE, CNMC)
+    - Sanidad y educación
+    - Cultura (BNE, RTVE)
+    - Elecciones (JEC)
+    - Transparencia y contratación (Portal de Transparencia, PLACSP, Infosubvenciones)
+    - Turismo (Dataestur)
+    - Catálogo nacional de datos abiertos (datos.gob.es)
+
+implementations:
+  skill:
+    available: true
+    path: ./
+    requires_install: false

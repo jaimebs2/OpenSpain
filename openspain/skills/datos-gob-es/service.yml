@@ -1,0 +1,47 @@
+name: datos-gob-es
+display_name: Catálogo Nacional de Datos Abiertos
+description: >
+  Punto de entrada al catálogo público de +90.000 datasets de toda la
+  Administración española (ministerios, CCAA, ayuntamientos, universidades).
+  Búsqueda por título, publisher o tema, y descubrimiento de URLs de descarga
+  de cualquier dataset abierto que no tenga skill propia en OpenSpain.
+organization: Ministerio para la Transformación Digital y de la Función Pública
+tags: [datos abiertos, catálogo, ckan, dcat, descubrimiento]
+
+links:
+  website: https://datos.gob.es
+  docs: https://datos.gob.es/es/apidata
+  terms: https://datos.gob.es/es/aviso-legal
+
+license:
+  data: Ley 37/2007 de reutilización del sector público
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    apidata: https://datos.gob.es/apidata
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Búsqueda de datasets por título (texto libre)
+    - Filtrado por publisher (organismo emisor)
+    - Filtrado por tema DCAT-AP-ES
+    - Detalle de un dataset y sus distribuciones (URLs de descarga)
+  not_accessible:
+    - Contenido de los datasets en sí (hay que descargarlos por separado)
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false

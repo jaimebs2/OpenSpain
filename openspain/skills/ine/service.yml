@@ -1,0 +1,46 @@
+name: ine
+display_name: Instituto Nacional de Estadística
+description: >
+  Consulta las estadísticas oficiales de España publicadas por el INE:
+  operaciones estadísticas disponibles, series temporales (IPC, EPA,
+  demografía, etc.) y datos históricos por código de serie.
+organization: Instituto Nacional de Estadística
+tags: [estadística, IPC, EPA, paro, demografía, censo, INE, indicadores]
+
+links:
+  website: https://www.ine.es
+  docs: https://www.ine.es/dyngs/DataLab/manual.html?cid=66
+  terms: https://www.ine.es/aviso_legal
+
+license:
+  data: Ley 12/1989 de la Función Estadística Pública
+  code: MIT
+
+api:
+  type: rest-json
+  base_urls:
+    wstempus: https://servicios.ine.es/wstempus/js/ES
+  auth:
+    required: false
+  rate_limit:
+    documented: false
+    notes: >
+      Sin límite oficial publicado. Uso responsable recomendado.
+  stability: stable
+
+data:
+  scope:
+    national: true
+  accessible:
+    - Listado de operaciones estadísticas disponibles
+    - Series temporales asociadas a una operación (paginadas)
+    - Datos históricos de una serie por código (últimos N valores)
+  not_accessible:
+    - Microdatos individuales con identificación personal
+    - Datos sometidos a secreto estadístico
+
+implementations:
+  skill:
+    available: true
+    path: skill/
+    requires_install: false
